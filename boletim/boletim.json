@@ -1,6 +1,6 @@
 {
   "data": "2026-11-25",
-  "gerado_em": "2026-11-25T08:25:00-03:00",
+  "gerado_em": "2026-11-25T08:35:00-03:00",
   "titulo": "Conilon cai pela 5ª vez seguida com colheita do Vietnã no pico",
   "resumo": "Conilon a R$ 859,00 no CCCV, R$ 23,00 a menos que no pregão anterior (-2,6%). Londres paga menos que hoje para 2027, de R$ 10,63 a R$ 26,21 a menos por saca, porque a colheita do Vietnã aumenta a oferta.",
   "expectativa": {
@@ -10,7 +10,7 @@
     },
     "espirito_santo": {
       "tendencia": "queda",
-      "texto": "O conilon no CCCV acompanha Londres e caiu de R$ 929,00 (dia 16) para R$ 859,00 (dia 24). O que pode segurar o preço aqui é a oferta menor de conilon no ES (o USDA cortou a estimativa por causa do clima) e o dólar alto, mas por enquanto a pressão da bolsa é mais forte."
+      "texto": "Nas próximas semanas o conilon no CCCV tende a seguir Londres para baixo: caiu de R$ 929,00 (dia 16) para R$ 859,00 (dia 24) e hoje vale cerca de R$ 119,92 por saca a menos que o preço de Londres convertido. O que pode segurar o preço aqui é a oferta menor no ES (a Conab estima 12,1 milhões de sacas em 2026, queda de 14,3%) e o risco de o El Niño trazer calor e seca para a florada da safra 2027."
     }
   },
   "conilon": {
@@ -63,6 +63,7 @@
     "Se o robusta em Londres para de cair perto de US$ 2.750 por tonelada (mínima do ano)",
     "Ritmo de venda dos produtores do Vietnã no pico da colheita",
     "Chuva e calor no norte do ES entre quinta e sexta (aviso do Inmet)",
+    "Calor e chuva no norte do ES durante a florada (risco de El Niño)",
     "Estoques da bolsa de Nova York, que voltaram a subir",
     "Dólar: se cair, o arábica em reais perde a sustentação"
   ],
@@ -73,13 +74,6 @@
       "fonte": "Folha Agrícola / Cepea",
       "url": "https://folhaagricola.com.br/2026/11/25/cafe-dolar-sustenta-alta-do-arabica-no-brasil-robusta-segue-em-queda/",
       "data": "2026-11-25"
-    },
-    {
-      "titulo": "Café robusta atinge menor cotação em 2 anos e meio, enquanto arábica sobe",
-      "resumo": "Robusta caiu 2,3% em Londres com o início da colheita no Vietnã, que deve ganhar ritmo no fim de novembro.",
-      "fonte": "Investing.com / Reuters",
-      "url": "https://br.investing.com/news/economy-news/cafe-robusta-atinge-menor-cotacao-em-2-anos-e-meio-enquanto-arabica-sobe-2130436",
-      "data": "2026-11-17"
     },
     {
       "titulo": "Café atinge menores níveis em quase cinco meses em NY com aumento dos estoques certificados",
@@ -101,6 +95,13 @@
       "fonte": "Forbes Brasil / Reuters",
       "url": "https://forbes.com.br/forbes-agro/2026/11/adido-do-usda-eleva-previsao-da-safra-recorde-de-cafe-do-brasil-para-725-milhoes-de-sacas/",
       "data": "2026-11-17"
+    },
+    {
+      "titulo": "El Niño ameaça safra de conilon no ES em 2026",
+      "resumo": "A Conab estima 12,1 milhões de sacas de conilon no ES em 2026, queda de 14,3% por causa da florada irregular, e aponta o El Niño como risco para a próxima safra.",
+      "fonte": "ES Hoje",
+      "url": "https://eshoje.com.br/economia/2026/09/el-nino-safra-de-conilon-no-es/",
+      "data": "2026-09-24"
     },
     {
       "titulo": "Preços do café hoje, 25/11/2026: robusta e arábica",
