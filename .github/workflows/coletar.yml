@@ -31,8 +31,8 @@ jobs:
 
       - name: Salvar no repositório
         run: |
-          git config user.name "coletor-cafe"
-          git config user.email "coletor-cafe@users.noreply.github.com"
+          git config user.name "gustavosarti"
+          git config user.email "72812365+gustavosarti@users.noreply.github.com"
           git add dados/
           if git diff --cached --quiet; then
             echo "Sem mudanças."

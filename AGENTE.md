@@ -91,6 +91,9 @@ Regras:
 
 ## Passo 5: validar e publicar
 
+0. Antes do commit, configure a autoria como manda o `CLAUDE.md`:
+   `git config user.name "gustavosarti"` e `git config user.email "72812365+gustavosarti@users.noreply.github.com"`.
+   Não adicione linhas de coautoria/atribuição (Co-Authored-By, Claude-Session etc.) na mensagem do commit.
 1. Valide o JSON (por exemplo `python3 -m json.tool boletim/boletim.json`).
 2. Faça commit só de `boletim/boletim.json` com a mensagem `Boletim AAAA-MM-DD` e dê push na branch `main`.
 3. Se o push falhar por conflito, faça `git pull --rebase` e tente de novo.
