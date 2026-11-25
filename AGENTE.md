@@ -41,6 +41,9 @@ Reuters, Bloomberg Línea, Climatempo, Inmet. Guarde o link de cada notícia usa
 ## Passo 3: analisar "hoje × futuro"
 
 Para o **conilon** (prioridade) e para o arábica dura:
+- O contrato de referência (o próprio preço de hoje da bolsa, indicado em `contrato_referencia`) já vem fora
+  da lista: compare apenas os vencimentos seguintes, porque o que importa é se o preço tende a SUBIR em
+  relação a hoje nos próximos dias e meses.
 - Compare o preço de hoje no CCCV com cada vencimento (`vs_hoje_cccv_pct`). Diga em palavras simples se o
   mercado está pagando **mais ou menos que hoje** para os próximos meses, e quanto (R$/saca e %).
 - Explique o **porquê** com base nas notícias. Exemplo: "Londres paga menos para os próximos meses porque a
@@ -57,7 +60,7 @@ Sobrescreva o arquivo com este formato exato (JSON válido, UTF-8):
   "data": "AAAA-MM-DD",
   "gerado_em": "AAAA-MM-DDTHH:MM:SS-03:00",
   "titulo": "Frase curta com a principal notícia do dia (máx. 70 caracteres)",
-  "resumo": "2 a 3 frases simples: como está o conilon hoje no CCCV, o que mudou e por quê.",
+  "resumo": "NO MÁXIMO 2 frases curtas (até ~300 caracteres): 1) preço do conilon hoje no CCCV e quanto mudou; 2) o que o mercado futuro indica para os próximos meses em relação a hoje (sobe ou cai, quanto em R$/saca) e o motivo principal.",
   "conilon": {
     "preco_hoje": 0.0,
     "variacao_dia": "ex.: caiu R$ 23,00 (-2,6%) em relação ao pregão anterior",
@@ -84,6 +87,8 @@ Sobrescreva o arquivo com este formato exato (JSON válido, UTF-8):
 ```
 
 Regras:
+- `titulo` e `resumo` aparecem no cartão da tela inicial: sejam curtos e diretos. O detalhe vai em `conilon`,
+  `arabica`, `fatores` e `noticias`, que aparecem no boletim completo.
 - `fatores`: de 3 a 6 itens, os mais importantes do dia.
 - `noticias`: de 3 a 6 itens, todos com link real que você abriu ou viu nos resultados de busca.
 - Não copie trechos longos das notícias: resuma com suas palavras.

@@ -266,7 +266,13 @@ def comparar_hoje_futuro(mercado, bolsa, cccv_hoje, usd):
     if cccv_hoje and usd and preco_cont:
         base = cccv_hoje - por_saca_usd(mercado, preco_cont) * usd
         out["diferencial_cccv_rs_saca"] = round(base, 2)
-    for c in bolsa["curva"]:
+    curva = list(bolsa["curva"])
+    # O primeiro contrato costuma ser o próprio "contínuo" (a referência do preço de hoje):
+    # ele não diz nada sobre o futuro, então sai da comparação.
+    if curva and preco_cont and abs(curva[0]["preco"] / preco_cont - 1) < 0.005:
+        out["contrato_referencia"] = curva[0]["vencimento"]
+        curva = curva[1:]
+    for c in curva:
         item = {"vencimento": c["vencimento"], "preco_bolsa": c["preco"],
                 "vs_hoje_bolsa_pct": round((c["preco"] / preco_cont - 1) * 100, 2) if preco_cont else None}
         if base is not None:
