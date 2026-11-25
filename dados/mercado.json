@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-11-25T07:39:05-03:00",
+  "gerado_em": "2026-11-25T07:40:10-03:00",
   "cccv": {
     "mes": "novembro",
     "ano": 2026,
@@ -114,23 +114,28 @@
       "conilon": 916.07
     }
   },
-  "dolar": null,
+  "dolar": {
+    "cotacao": 5.9028,
+    "var_dia_pct": -0.055874434906288455,
+    "var_mes_pct": 18.88342866349794,
+    "fonte": "TradingView"
+  },
   "robusta": {
     "unidade": "US$/t",
     "bolsa": "ICE Londres",
     "continuo": {
-      "close": 2754,
-      "change_abs": -59,
-      "change": -2.0974049057945257,
-      "SMA20": 3112.45,
-      "SMA50": 3277.42,
-      "SMA200": 3519.595,
-      "RSI": 15.85294492829398,
-      "Perf.W": -10.029402156158119,
-      "Perf.1M": -13.9375,
-      "Perf.3M": -23.07262569832402,
-      "Perf.6M": -22.640449438202246,
-      "Perf.Y": -38.81359697844923,
+      "close": 2755,
+      "change_abs": -58,
+      "change": -2.0618556701030926,
+      "SMA20": 3112.5,
+      "SMA50": 3277.44,
+      "SMA200": 3519.6,
+      "RSI": 15.880124924858336,
+      "Perf.W": -9.99673309376021,
+      "Perf.1M": -13.90625,
+      "Perf.3M": -23.044692737430168,
+      "Perf.6M": -22.6123595505618,
+      "Perf.Y": -38.79137969340147,
       "price_52_week_high": 4605,
       "price_52_week_low": 2752,
       "Recommend.All": -0.5363636363636364
@@ -140,7 +145,7 @@
         "vencimento": "Jan/27",
         "ano": 2027,
         "mes": 1,
-        "preco": 2754
+        "preco": 2755
       },
       {
         "vencimento": "Mar/27",
@@ -186,98 +191,304 @@
       }
     ]
   },
-  "arabica": null,
+  "arabica": {
+    "unidade": "US¢/lb",
+    "bolsa": "ICE Nova York",
+    "continuo": {
+      "simbolo": "ICEUS:KC1!",
+      "nome": "Coffee C Futures",
+      "preco": 259.55,
+      "var_dia_pct": -1.1614623000761657,
+      "var_semana_pct": -6.63669064748201,
+      "var_mes_pct": -13.019436997319024,
+      "var_3m_pct": -18.097191543073514,
+      "var_ano_pct": -31.67938931297709,
+      "max_52s": 385,
+      "min_52s": 242.7,
+      "sma50": 285.42,
+      "sma200": 292.51599999999996,
+      "rsi": 33.69428755209505,
+      "sinal_tecnico": -0.5575757575757576,
+      "fonte": "TradingView"
+    },
+    "curva": [
+      {
+        "vencimento": "Mar/27",
+        "ano": 2027,
+        "mes": 3,
+        "preco": 259.55
+      },
+      {
+        "vencimento": "Mai/27",
+        "ano": 2027,
+        "mes": 5,
+        "preco": 254.65
+      },
+      {
+        "vencimento": "Jul/27",
+        "ano": 2027,
+        "mes": 7,
+        "preco": 250.45
+      },
+      {
+        "vencimento": "Set/27",
+        "ano": 2027,
+        "mes": 9,
+        "preco": 246.8
+      },
+      {
+        "vencimento": "Dez/27",
+        "ano": 2027,
+        "mes": 12,
+        "preco": 242.65
+      },
+      {
+        "vencimento": "Mar/28",
+        "ano": 2028,
+        "mes": 3,
+        "preco": 239.3
+      }
+    ]
+  },
   "outras_commodities": {
     "acucar": {
+      "simbolo": "ICEUS:SB1!",
       "nome": "Açúcar (NY)",
+      "preco": 17.87,
+      "var_dia_pct": 1.1891279728199369,
+      "var_semana_pct": -0.9972299168975053,
+      "var_mes_pct": -9.974811083123427,
+      "var_3m_pct": 1.4188422247446084,
+      "var_ano_pct": 20.417789757412407,
+      "max_52s": 21.29,
+      "min_52s": 13.22,
+      "sma50": 18.9418,
+      "sma200": 16.026500000000002,
+      "rsi": 42.861120942426,
+      "sinal_tecnico": -0.09090909090909091,
+      "fonte": "TradingView",
       "unidade": "US¢/lb"
     },
     "cacau": {
+      "simbolo": "ICEUS:CC1!",
       "nome": "Cacau (NY)",
+      "preco": 5342,
+      "var_dia_pct": -1.3116571217439497,
+      "var_semana_pct": 3.2270531400966185,
+      "var_mes_pct": -3.0490018148820326,
+      "var_3m_pct": -8.149931224209078,
+      "var_ano_pct": 3.8895371450797356,
+      "max_52s": 6821,
+      "min_52s": 2846,
+      "sma50": 5461.4,
+      "sma200": 4702.095,
+      "rsi": 50.26360438222993,
+      "sinal_tecnico": -0.1575757575757576,
+      "fonte": "TradingView",
       "unidade": "US$/t"
     },
     "milho": {
+      "simbolo": "CBOT:ZC1!",
       "nome": "Milho (Chicago)",
+      "preco": 432.5,
+      "var_dia_pct": -0.3456221198156682,
+      "var_semana_pct": -3.1897034135422495,
+      "var_mes_pct": -4.84048404840484,
+      "var_3m_pct": -15.52734375,
+      "var_ano_pct": 2.0648967551622417,
+      "max_52s": 549.75,
+      "min_52s": 403.75,
+      "sma50": 473.27,
+      "sma200": 460.8125,
+      "rsi": 31.401775821231922,
+      "sinal_tecnico": -0.4,
+      "fonte": "TradingView",
       "unidade": "US¢/bushel"
     },
     "soja": {
+      "simbolo": "CBOT:ZS1!",
       "nome": "Soja (Chicago)",
+      "preco": 1222.5,
+      "var_dia_pct": -0.9319286871961102,
+      "var_semana_pct": -0.24479804161566707,
+      "var_mes_pct": -3.1299524564183834,
+      "var_3m_pct": -3.0531324345757334,
+      "var_ano_pct": 8.981502117227546,
+      "max_52s": 1335.25,
+      "min_52s": 1037.75,
+      "sma50": 1258.595,
+      "sma200": 1208.34875,
+      "rsi": 46.068059366152866,
+      "sinal_tecnico": -0.24545454545454548,
+      "fonte": "TradingView",
       "unidade": "US¢/bushel"
     },
     "petroleo_brent": {
+      "simbolo": "ICEEUR:BRN1!",
       "nome": "Petróleo Brent",
+      "preco": 88.08,
+      "var_dia_pct": -0.7884658706916005,
+      "var_semana_pct": -5.6555269922879186,
+      "var_mes_pct": -20.541271989174557,
+      "var_3m_pct": 1.8265895953757205,
+      "var_ano_pct": 40.433673469387756,
+      "max_52s": 119.5,
+      "min_52s": 58.72,
+      "sma50": 101.1868,
+      "sma200": 94.52455,
+      "rsi": 33.27064907226645,
+      "sinal_tecnico": -0.5575757575757576,
+      "fonte": "TradingView",
       "unidade": "US$/barril"
     },
     "indice_dolar": {
+      "simbolo": "TVC:DXY",
       "nome": "Índice do dólar (DXY)",
+      "preco": 103.979,
+      "var_dia_pct": 0.12614590555427185,
+      "var_semana_pct": 0.3038663373977444,
+      "var_mes_pct": 2.163553651610873,
+      "var_3m_pct": 4.904255533808192,
+      "var_ano_pct": 3.7600662601909978,
+      "max_52s": 104.53,
+      "min_52s": 95.551,
+      "sma50": 102.13611999999999,
+      "sma200": 100.17789,
+      "rsi": 65.78330692104652,
+      "sinal_tecnico": 0.4383116883116883,
+      "fonte": "TradingView",
       "unidade": "pontos"
     }
   },
   "hoje_x_futuro": {
     "conilon": {
-      "hoje_bolsa": 2754,
+      "hoje_bolsa": 2755,
       "unidade_bolsa": "US$/t",
       "hoje_cccv": 859.0,
       "vencimentos": [
         {
           "vencimento": "Jan/27",
-          "preco_bolsa": 2754,
-          "vs_hoje_bolsa_pct": 0.0
+          "preco_bolsa": 2755,
+          "vs_hoje_bolsa_pct": 0.0,
+          "cccv_estimado": 859.0,
+          "vs_hoje_cccv_pct": 0.0
         },
         {
           "vencimento": "Mar/27",
           "preco_bolsa": 2725,
-          "vs_hoje_bolsa_pct": -1.05
+          "vs_hoje_bolsa_pct": -1.09,
+          "cccv_estimado": 848.37,
+          "vs_hoje_cccv_pct": -1.24
         },
         {
           "vencimento": "Mai/27",
           "preco_bolsa": 2714,
-          "vs_hoje_bolsa_pct": -1.45
+          "vs_hoje_bolsa_pct": -1.49,
+          "cccv_estimado": 844.48,
+          "vs_hoje_cccv_pct": -1.69
         },
         {
           "vencimento": "Jul/27",
           "preco_bolsa": 2710,
-          "vs_hoje_bolsa_pct": -1.6
+          "vs_hoje_bolsa_pct": -1.63,
+          "cccv_estimado": 843.06,
+          "vs_hoje_cccv_pct": -1.86
         },
         {
           "vencimento": "Set/27",
           "preco_bolsa": 2702,
-          "vs_hoje_bolsa_pct": -1.89
+          "vs_hoje_bolsa_pct": -1.92,
+          "cccv_estimado": 840.23,
+          "vs_hoje_cccv_pct": -2.19
         },
         {
           "vencimento": "Nov/27",
           "preco_bolsa": 2690,
-          "vs_hoje_bolsa_pct": -2.32
+          "vs_hoje_bolsa_pct": -2.36,
+          "cccv_estimado": 835.98,
+          "vs_hoje_cccv_pct": -2.68
         },
         {
           "vencimento": "Jan/28",
           "preco_bolsa": 2744,
-          "vs_hoje_bolsa_pct": -0.36
+          "vs_hoje_bolsa_pct": -0.4,
+          "cccv_estimado": 855.1,
+          "vs_hoje_cccv_pct": -0.45
         },
         {
           "vencimento": "Mar/28",
           "preco_bolsa": 2740,
-          "vs_hoje_bolsa_pct": -0.51
+          "vs_hoje_bolsa_pct": -0.54,
+          "cccv_estimado": 853.69,
+          "vs_hoje_cccv_pct": -0.62
         }
       ],
+      "diferencial_cccv_rs_saca": -116.73,
       "resumo": {
         "acima_de_hoje": 0,
         "abaixo_de_hoje": 7,
         "maior_pct": 0.0,
-        "menor_pct": -2.32,
+        "menor_pct": -2.68,
         "leitura": "queda"
       }
     },
-    "arabica_dura": null
+    "arabica_dura": {
+      "hoje_bolsa": 259.55,
+      "unidade_bolsa": "US¢/lb",
+      "hoje_cccv": 1597.0,
+      "vencimentos": [
+        {
+          "vencimento": "Mar/27",
+          "preco_bolsa": 259.55,
+          "vs_hoje_bolsa_pct": 0.0,
+          "cccv_estimado": 1597.0,
+          "vs_hoje_cccv_pct": 0.0
+        },
+        {
+          "vencimento": "Mai/27",
+          "preco_bolsa": 254.65,
+          "vs_hoje_bolsa_pct": -1.89,
+          "cccv_estimado": 1558.74,
+          "vs_hoje_cccv_pct": -2.4
+        },
+        {
+          "vencimento": "Jul/27",
+          "preco_bolsa": 250.45,
+          "vs_hoje_bolsa_pct": -3.51,
+          "cccv_estimado": 1525.95,
+          "vs_hoje_cccv_pct": -4.45
+        },
+        {
+          "vencimento": "Set/27",
+          "preco_bolsa": 246.8,
+          "vs_hoje_bolsa_pct": -4.91,
+          "cccv_estimado": 1497.45,
+          "vs_hoje_cccv_pct": -6.23
+        },
+        {
+          "vencimento": "Dez/27",
+          "preco_bolsa": 242.65,
+          "vs_hoje_bolsa_pct": -6.51,
+          "cccv_estimado": 1465.04,
+          "vs_hoje_cccv_pct": -8.26
+        },
+        {
+          "vencimento": "Mar/28",
+          "preco_bolsa": 239.3,
+          "vs_hoje_bolsa_pct": -7.8,
+          "cccv_estimado": 1438.89,
+          "vs_hoje_cccv_pct": -9.9
+        }
+      ],
+      "diferencial_cccv_rs_saca": -429.58,
+      "resumo": {
+        "acima_de_hoje": 0,
+        "abaixo_de_hoje": 5,
+        "maior_pct": 0.0,
+        "menor_pct": -9.9,
+        "leitura": "queda"
+      }
+    }
   },
-  "erros": [
-    "dólar: HTTPError: HTTP Error 429: Too Many Requests",
-    "arábica: HTTPError: HTTP Error 429: Too Many Requests",
-    "Açúcar (NY): HTTPError: HTTP Error 429: Too Many Requests",
-    "Cacau (NY): HTTPError: HTTP Error 429: Too Many Requests",
-    "Milho (Chicago): HTTPError: HTTP Error 429: Too Many Requests",
-    "Soja (Chicago): HTTPError: HTTP Error 429: Too Many Requests",
-    "Petróleo Brent: HTTPError: HTTP Error 429: Too Many Requests",
-    "Índice do dólar (DXY): HTTPError: HTTP Error 429: Too Many Requests"
-  ]
+  "erros": []
 }
