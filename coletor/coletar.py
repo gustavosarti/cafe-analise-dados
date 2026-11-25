@@ -9,8 +9,8 @@ Roda no GitHub Actions (sem IA): busca os números direto das fontes e grava
 Fontes (gratuitas, sem chave):
   - CCCV (Vitória/ES): https://www.cccv.org.br/cotacao/  (físico, R$/saca)
   - TradingView scanner: robusta ICE Londres (contínuo + vencimentos), indicadores
-  - Yahoo Finance: arábica ICE NY (contínuo + vencimentos) e outras commodities
-  - AwesomeAPI: dólar comercial
+  - TradingView: também arábica ICE NY, outras commodities e dólar
+  - AwesomeAPI / Banco Central (PTAX): reservas para o dólar
 Só usa a biblioteca padrão do Python.
 """
 import csv
@@ -115,11 +115,11 @@ def cccv():
 
 
 # ---------------------------------------------------------------- TradingView
-def tv_scan(tickers, colunas):
+def tv_scan(tickers, colunas, mercados=("futures", "global")):
     corpo = json.dumps({"symbols": {"tickers": tickers, "query": {"types": []}}, "columns": colunas}).encode()
     hdr = {"Content-Type": "application/json", "Origin": "https://www.tradingview.com", "Referer": "https://www.tradingview.com/"}
     ultimo = None
-    for mercado in ("futures", "global"):
+    for mercado in mercados:
         try:
             dados = json.loads(http(f"https://scanner.tradingview.com/{mercado}/scan", corpo, hdr)).get("data") or []
             if dados:
@@ -148,7 +148,36 @@ def robusta(hoje):
     return {"unidade": "US$/t", "bolsa": "ICE Londres", "continuo": cont, "curva": curva}
 
 
-# ---------------------------------------------------------------- Yahoo
+TV_COLS = ["close", "change", "change_abs", "description", "Perf.W", "Perf.1M", "Perf.3M", "Perf.Y",
+           "price_52_week_high", "price_52_week_low", "SMA50", "SMA200", "RSI", "Recommend.All"]
+
+
+def tv_quote(ticker, mercados=("futures", "global")):
+    """Cotação no mesmo formato do Yahoo, a partir do TradingView."""
+    try:
+        d = tv_scan([ticker], TV_COLS, mercados)[ticker]
+    except Exception:  # noqa: BLE001 - se alguma coluna extra falhar, tenta o básico
+        d = tv_scan([ticker], TV_COLS[:4], mercados)[ticker]
+    return {
+        "simbolo": ticker,
+        "nome": d.get("description"),
+        "preco": d.get("close"),
+        "var_dia_pct": d.get("change"),
+        "var_semana_pct": d.get("Perf.W"),
+        "var_mes_pct": d.get("Perf.1M"),
+        "var_3m_pct": d.get("Perf.3M"),
+        "var_ano_pct": d.get("Perf.Y"),
+        "max_52s": d.get("price_52_week_high"),
+        "min_52s": d.get("price_52_week_low"),
+        "sma50": d.get("SMA50"),
+        "sma200": d.get("SMA200"),
+        "rsi": d.get("RSI"),
+        "sinal_tecnico": d.get("Recommend.All"),
+        "fonte": "TradingView",
+    }
+
+
+# ---------------------------------------------------------------- Yahoo (reserva; bloqueia servidores do GitHub com frequência)
 def yahoo(simbolo, rng="1y", intervalo="1d"):
     url = f"https://query1.finance.yahoo.com/v8/finance/chart/{urllib.request.quote(simbolo)}?range={rng}&interval={intervalo}"
     r = json.loads(http(url, headers={"Accept": "application/json"}))["chart"]["result"][0]
@@ -176,34 +205,48 @@ def yahoo(simbolo, rng="1y", intervalo="1d"):
 
 
 def arabica(hoje):
-    cont = yahoo("KC=F")
+    cont = tv_quote("ICEUS:KC1!")
     codigos = {3: "H", 5: "K", 7: "N", 9: "U", 12: "Z"}
-    curva = []
-    for a, m in proximos(hoje, codigos, 8):
-        q = seguro(f"KC {rotulo(a, m)}", lambda a=a, m=m: yahoo(f"KC{codigos[m]}{a % 100:02d}.NYB", "5d"))
-        if q and q.get("preco"):
-            idade = dt.datetime.now(dt.timezone.utc) - dt.datetime.fromisoformat(q["atualizado"])
-            if idade.days <= 7:
-                curva.append({"vencimento": rotulo(a, m), "ano": a, "mes": m, "preco": q["preco"]})
+    venc = proximos(hoje, codigos, 8)
+    tick = [f"ICEUS:KC{codigos[m]}{a}" for a, m in venc]
+    curva_raw = seguro("curva arábica", lambda: tv_scan(tick, ["close"]), {})
+    curva = [
+        {"vencimento": rotulo(a, m), "ano": a, "mes": m, "preco": curva_raw[t]["close"]}
+        for (a, m), t in zip(venc, tick)
+        if t in curva_raw and curva_raw[t].get("close")
+    ]
     return {"unidade": "US¢/lb", "bolsa": "ICE Nova York", "continuo": cont, "curva": curva}
 
 
 def dolar():
+    """Dólar comercial: TradingView; reservas: AwesomeAPI e PTAX do Banco Central."""
+    try:
+        q = tv_quote("FX_IDC:USDBRL", ("forex", "global"))
+        if q.get("preco"):
+            return {"cotacao": q["preco"], "var_dia_pct": q["var_dia_pct"], "var_mes_pct": q["var_mes_pct"], "fonte": "TradingView"}
+    except Exception as e:  # noqa: BLE001
+        ERROS.append(f"dólar TradingView: {e}")
     try:
         o = json.loads(http("https://economia.awesomeapi.com.br/json/last/USD-BRL"))["USDBRL"]
         return {"cotacao": float(o["bid"]), "var_dia_pct": float(o["pctChange"]), "fonte": "AwesomeAPI"}
-    except Exception:  # noqa: BLE001
-        q = yahoo("BRL=X", "1mo")
-        return {"cotacao": q["preco"], "var_dia_pct": q["var_dia_pct"], "fonte": "Yahoo"}
+    except Exception as e:  # noqa: BLE001
+        ERROS.append(f"dólar AwesomeAPI: {e}")
+    hoje = dt.date.today()
+    ini = (hoje - dt.timedelta(days=7)).strftime("%m-%d-%Y")
+    fim = hoje.strftime("%m-%d-%Y")
+    url = ("https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarPeriodo(dataInicial=@i,dataFinalCotacao=@f)"
+           f"?@i='{ini}'&@f='{fim}'&$format=json&$select=cotacaoVenda,dataHoraCotacao")
+    v = json.loads(http(url))["value"]
+    return {"cotacao": v[-1]["cotacaoVenda"], "var_dia_pct": None, "fonte": "Banco Central (PTAX)"}
 
 
 OUTRAS = {
-    "acucar": ("SB=F", "Açúcar (NY)", "US¢/lb"),
-    "cacau": ("CC=F", "Cacau (NY)", "US$/t"),
-    "milho": ("ZC=F", "Milho (Chicago)", "US¢/bushel"),
-    "soja": ("ZS=F", "Soja (Chicago)", "US¢/bushel"),
-    "petroleo_brent": ("BZ=F", "Petróleo Brent", "US$/barril"),
-    "indice_dolar": ("DX-Y.NYB", "Índice do dólar (DXY)", "pontos"),
+    "acucar": ("ICEUS:SB1!", "Açúcar (NY)", "US¢/lb"),
+    "cacau": ("ICEUS:CC1!", "Cacau (NY)", "US$/t"),
+    "milho": ("CBOT:ZC1!", "Milho (Chicago)", "US¢/bushel"),
+    "soja": ("CBOT:ZS1!", "Soja (Chicago)", "US¢/bushel"),
+    "petroleo_brent": ("ICEEUR:BRN1!", "Petróleo Brent", "US$/barril"),
+    "indice_dolar": ("TVC:DXY", "Índice do dólar (DXY)", "pontos"),
 }
 
 
@@ -250,7 +293,8 @@ def main():
     dados["robusta"] = seguro("robusta", lambda: robusta(hoje))
     dados["arabica"] = seguro("arábica", lambda: arabica(hoje))
     dados["outras_commodities"] = {
-        k: dict(seguro(nome, lambda s=s: yahoo(s)) or {}, nome=nome, unidade=u) for k, (s, nome, u) in OUTRAS.items()
+        k: dict(seguro(nome, lambda s=s: tv_quote(s, ("futures", "global", "cfd"))) or {}, nome=nome, unidade=u)
+        for k, (s, nome, u) in OUTRAS.items()
     }
 
     usd = (dados["dolar"] or {}).get("cotacao")
