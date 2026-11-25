@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Café Análise — o preço do conilon no Espírito Santo, hoje e no futuro</title>
+<meta name="description" content="App Android gratuito para produtores de café do Espírito Santo: preço do conilon e do arábica no CCCV (Vitória), mercado futuro de Londres e Nova York e boletim diário em linguagem simples.">
+<meta property="og:title" content="Café Análise — conilon no Espírito Santo">
+<meta property="og:description" content="Preço do CCCV, mercado futuro e boletim diário em linguagem simples. App Android gratuito.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Ccircle cx='24' cy='24' r='22' fill='%231A1714'/%3E%3Cellipse cx='24' cy='24' rx='11' ry='15' fill='%23F2B233'/%3E%3Cpath d='M24 10.5c-3.5 4-3.5 8.5 0 13.5s3.5 9.5 0 13.5' stroke='%231A1714' stroke-width='2.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#0E0C0A; --card:#1A1714; --card2:#221E1A; --border:rgba(255,255,255,.10);
+    --gold:#F2B233; --gold-2:#C98A3C; --text:#F3EEE8; --muted:#9A938A; --up:#5BC46A; --down:#E5675F;
+    --radius:18px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:var(--gold)}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+  /* fundo com brilho quente */
+  .glow{position:fixed;inset:0;pointer-events:none;z-index:-1;
+    background:radial-gradient(900px 500px at 75% -10%,rgba(242,178,51,.14),transparent 60%),
+               radial-gradient(700px 500px at -10% 30%,rgba(201,138,60,.10),transparent 60%)}
+
+  /* topo */
+  header{position:sticky;top:0;z-index:10;background:rgba(14,12,10,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+  .nav{display:flex;align-items:center;gap:20px;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;color:var(--gold);text-decoration:none}
+  .brand svg{width:30px;height:30px}
+  .nav nav{margin-left:auto;display:flex;gap:22px;align-items:center}
+  .nav nav a{color:var(--muted);text-decoration:none;font-size:15px}
+  .nav nav a:hover{color:var(--text)}
+  .nav nav a.btn-gold{color:#17120A}
+  .btn{display:inline-flex;align-items:center;gap:10px;border-radius:12px;padding:13px 20px;font-weight:700;text-decoration:none;font-size:16px;border:1px solid transparent;transition:transform .15s ease,box-shadow .15s ease}
+  .btn:hover{transform:translateY(-1px)}
+  .btn-gold{background:var(--gold);color:#17120A;box-shadow:0 8px 28px rgba(242,178,51,.25)}
+  .btn-ghost{border-color:var(--border);color:var(--text);background:var(--card)}
+  .btn-sm{padding:8px 14px;font-size:14px;border-radius:10px}
+  .btn svg{width:20px;height:20px}
+
+  /* hero */
+  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:64px 0 40px}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--up);box-shadow:0 0 0 4px rgba(91,196,106,.18)}
+  h1{font-size:clamp(34px,5vw,54px);line-height:1.08;margin:14px 0 16px;letter-spacing:-.02em}
+  h1 em{font-style:normal;color:var(--gold)}
+  .lead{font-size:19px;color:#D9D2C8;max-width:560px}
+  .cta{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 16px}
+  .small{font-size:13px;color:var(--muted)}
+  .live{margin-top:26px;display:inline-flex;flex-wrap:wrap;gap:10px 18px;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 16px}
+  .live b{color:var(--gold);font-size:20px}
+
+  /* celular */
+  .phone{width:320px;max-width:100%;margin:0 auto;border-radius:44px;padding:12px;background:#050403;border:1px solid #2B2621;
+    box-shadow:0 40px 80px rgba(0,0,0,.55),0 0 0 2px #15120F inset,0 0 60px rgba(242,178,51,.10)}
+  .screen{border-radius:34px;overflow:hidden;background:var(--bg);height:640px;display:flex;flex-direction:column;position:relative}
+  .status{display:flex;justify-content:space-between;font-size:12px;color:#D8D1C7;padding:12px 22px 4px;font-weight:600}
+  .appbar{display:flex;align-items:center;padding:6px 18px 8px}
+  .appbar .t{color:var(--gold);font-weight:800;font-size:19px}
+  .appbar .ic{margin-left:auto;display:flex;gap:14px}
+  .appbar svg{width:20px;height:20px;fill:var(--gold)}
+  .scroll{flex:1;overflow:hidden;padding:0 12px}
+  .date{font-weight:800;font-size:17px;padding:2px 4px 0}
+  .upd{font-size:10.5px;color:var(--muted);padding:0 4px 8px}
+  .m-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 13px;margin-bottom:9px}
+  .m-lbl{display:flex;justify-content:space-between;font-size:9.5px;letter-spacing:.1em;color:var(--gold);font-weight:800;margin-bottom:4px}
+  .m-lbl span:last-child{color:var(--muted);letter-spacing:0;font-weight:500}
+  .m-price{font-size:27px;font-weight:800;color:var(--gold)}
+  .m-price small{font-size:12px;color:var(--muted);font-weight:500}
+  .m-row{font-size:12px;font-weight:700}
+  .m-sub{font-size:11.5px;color:var(--text);margin-top:2px}
+  .m-exp{font-size:10.5px;color:#D9D2C8;margin-top:2px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+  .m-exp-h{font-size:9px;letter-spacing:.1em;color:var(--gold);font-weight:800;margin-top:7px}
+  .m-exp-h span{letter-spacing:0;font-size:11px}
+  .down{color:var(--down)} .up{color:var(--up)} .flat{color:var(--muted)}
+  .m-line{display:flex;justify-content:space-between;align-items:center;font-size:12px;padding:5px 0;border-top:1px solid var(--border)}
+  .m-line:first-of-type{border-top:0}
+  .m-line div small{display:block;color:var(--muted);font-size:10px}
+  .m-line b{font-size:13px}
+  .tabs{display:flex;justify-content:space-around;background:var(--card);padding:9px 6px 16px;border-top:1px solid var(--border)}
+  .tab{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:9.5px;color:var(--muted)}
+  .tab svg{width:20px;height:20px;fill:var(--muted)}
+  .tab.on{color:var(--gold)}
+  .tab.on .pill{background:var(--gold);border-radius:12px;padding:3px 14px}
+  .tab.on svg{fill:#000}
+
+  /* seções */
+  section{padding:56px 0}
+  h2{font-size:clamp(26px,3.4vw,36px);margin:0 0 10px;letter-spacing:-.01em}
+  .sec-lead{color:var(--muted);max-width:640px;margin:0 0 30px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .feat{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px}
+  .feat .ico{width:42px;height:42px;border-radius:12px;background:rgba(242,178,51,.12);display:grid;place-items:center;margin-bottom:12px}
+  .feat .ico svg{width:22px;height:22px;fill:var(--gold)}
+  .feat h3{margin:0 0 6px;font-size:18px}
+  .feat p{margin:0;color:#CFC8BE;font-size:15px}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+  .chart-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px}
+  .chart-card h3{margin:0 0 4px;color:var(--gold);font-size:17px}
+  .legend{display:flex;gap:16px;font-size:13px;color:var(--muted);margin-top:8px}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+  .reading{margin-top:12px;font-weight:700}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin-top:10px}
+  td,th{padding:7px 4px;text-align:right;border-top:1px solid var(--border)}
+  th{color:var(--muted);font-weight:600;border-top:0}
+  td:first-child,th:first-child{text-align:left;color:var(--gold)}
+  th:first-child{color:var(--muted)}
+
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:s}
+  .step{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;position:relative}
+  .step::before{counter-increment:s;content:counter(s);position:absolute;top:-12px;left:18px;width:26px;height:26px;border-radius:50%;background:var(--gold);color:#000;font-weight:800;display:grid;place-items:center;font-size:14px}
+  .step h3{margin:6px 0 6px;font-size:16px}
+  .step p{margin:0;color:#CFC8BE;font-size:14px}
+
+  .download{background:linear-gradient(135deg,#231C12,#1A1714 55%);border:1px solid rgba(242,178,51,.35);border-radius:24px;padding:36px;display:grid;grid-template-columns:1.1fr .9fr;gap:30px}
+  .download ol{margin:0;padding-left:20px;color:#D9D2C8}
+  .download li{margin:8px 0}
+  .req{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0}
+  .chip{font-size:13px;border:1px solid var(--border);border-radius:999px;padding:5px 12px;color:var(--muted);background:var(--card)}
+
+  .sources{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  .src{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;font-size:14px}
+  .src b{display:block;color:var(--text)}
+  .src span{color:var(--muted);font-size:13px}
+
+  footer{border-top:1px solid var(--border);padding:28px 0 40px;color:var(--muted);font-size:13px}
+  footer .row{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between}
+
+  @media (max-width:900px){
+    .hero,.split,.download{grid-template-columns:1fr}
+    .grid{grid-template-columns:1fr 1fr}
+    .flow{grid-template-columns:1fr 1fr}
+    .sources{grid-template-columns:1fr 1fr}
+    .nav nav a:not(.btn){display:none}
+  }
+  @media (max-width:560px){
+    .wrap{padding:0 16px}
+    .grid,.flow{grid-template-columns:1fr}
+    .hero{padding-top:28px;gap:32px}
+    .lead{font-size:17px}
+    .cta .btn{flex:1 1 100%;justify-content:center}
+    .live{display:flex}
+    section{padding:40px 0}
+    .feat,.step,.chart-card{padding:18px}
+    .download{padding:22px;border-radius:20px}
+    .download .btn{width:100%;justify-content:center}
+    table{font-size:13px}
+    .brand{font-size:17px}
+    .phone{width:300px}
+    .screen{height:600px}
+  }
+</style>
+</head>
+<body>
+<div class="glow"></div>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="#1A1714"/><ellipse cx="24" cy="24" rx="11" ry="15" fill="#F2B233"/><path d="M24 10.5c-3.5 4-3.5 8.5 0 13.5s3.5 9.5 0 13.5" stroke="#1A1714" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>
+      Café Análise
+    </a>
+    <nav>
+      <a href="#recursos">Recursos</a>
+      <a href="#futuro">Hoje × futuro</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a class="btn btn-gold btn-sm" href="#baixar">Baixar</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ================= HERO ================= -->
+  <div class="hero">
+    <div>
+      <span class="eyebrow"><span class="dot"></span>Feito para o produtor capixaba</span>
+      <h1>O preço do <em>conilon no Espírito Santo</em>, hoje e no futuro.</h1>
+      <p class="lead">
+        App Android gratuito que mostra o preço do dia no <strong>CCCV (Vitória)</strong>, compara com o
+        mercado futuro de <strong>Londres</strong> e <strong>Nova York</strong> e explica, em linguagem simples,
+        se o mercado espera o preço subir ou cair. Sem jargão de bolsa.
+      </p>
+      <div class="cta">
+        <a class="btn btn-gold" href="download/CafeAnalise.apk" download>
+          <svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18l-5.5 5.5 1.41 1.41L11 5.83V16h2V5.83l3.09 3.08 1.41-1.41L12 2z" transform="rotate(180 12 11)"/></svg>
+          Baixar para Android
+        </a>
+        <a class="btn btn-ghost" href="https://github.com/gustavosarti/cafe-analise-dados">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.17 1.18a10.9 10.9 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.68.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+          Código no GitHub
+        </a>
+      </div>
+      <p class="small">Versão <span id="versao">1.0 (v10)</span> · Android 7.0 ou superior · ~9 MB · Gratuito, sem anúncios e sem cadastro</p>
+      <div class="live" id="live" hidden>
+        <span class="small">Conilon no CCCV</span>
+        <b id="live-price">—</b>
+        <span id="live-var" class="m-row"></span>
+        <span class="small" id="live-date"></span>
+      </div>
+    </div>
+
+    <!-- celular com a tela inicial (dados ao vivo do repositório) -->
+    <div>
+      <div class="phone" aria-label="Tela inicial do app">
+        <div class="screen">
+          <div class="status"><span id="ph-hora">08:00</span><span>5G ▮▮▮ 80%</span></div>
+          <div class="appbar">
+            <span class="t">Café Análise</span>
+            <span class="ic">
+              <svg viewBox="0 0 24 24"><path d="M17.65 6.35A7.96 7.96 0 0 0 12 4C7.58 4 4.01 7.58 4.01 12S7.58 20 12 20c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94L14.4 2.81a.48.48 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96a.48.48 0 0 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32a.49.49 0 0 0-.12-.61l-2.01-1.58zM12 15.6A3.6 3.6 0 1 1 12 8.4a3.6 3.6 0 0 1 0 7.2z"/></svg>
+            </span>
+          </div>
+          <div class="scroll">
+            <div class="date" id="ph-data">Quarta-feira, 25 de novembro</div>
+            <div class="upd">Atualiza sozinho a cada minuto</div>
+
+            <div class="m-card">
+              <div class="m-lbl"><span>CONILON HOJE</span><span id="ph-cccv-dia">CCCV</span></div>
+              <div class="m-price"><span id="ph-preco">R$ 859,00</span> <small>a saca</small></div>
+              <div class="m-row down" id="ph-var">▼ Caiu R$ 23,00 desde o dia anterior</div>
+              <div class="m-sub" id="ph-sacas">100 sacas valem hoje R$ 85.900,00</div>
+              <div class="m-exp-h">MUNDO <span id="ph-mundo-t" class="down">▼ tendência de queda</span></div>
+              <div class="m-exp" id="ph-mundo">Londres paga menos que hoje para 2027, com a colheita do Vietnã aumentando a oferta.</div>
+              <div class="m-exp-h">ESPÍRITO SANTO <span id="ph-es-t" class="down">▼ tendência de queda</span></div>
+              <div class="m-exp" id="ph-es">O CCCV acompanha Londres; a oferta menor de conilon no ES pode segurar o preço.</div>
+            </div>
+
+            <div class="m-card">
+              <div class="m-lbl"><span>BOLETIM DO DIA</span><span>Boletim de hoje</span></div>
+              <div style="font-weight:800;font-size:13px" id="ph-bol-t">Conilon cai com colheita do Vietnã pesando</div>
+              <div class="m-exp" id="ph-bol-r" style="font-size:11px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden">—</div>
+              <div style="color:var(--gold);font-size:11px;font-weight:700;margin-top:6px">Ler boletim completo ›</div>
+            </div>
+
+            <div class="m-card">
+              <div class="m-lbl"><span>ESPÍRITO SANTO · CCCV</span><span id="ph-cccv-dia2"></span></div>
+              <div class="m-line"><div>Arábica dura<small id="ph-dura-s"></small></div><b id="ph-dura">—</b></div>
+              <div class="m-line"><div>Arábica rio</div><b id="ph-rio">—</b></div>
+              <div class="m-line"><div>Conilon 7/8</div><b id="ph-con">—</b></div>
+            </div>
+          </div>
+          <div class="tabs">
+            <div class="tab on"><span class="pill"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></span>Hoje</div>
+            <div class="tab"><svg viewBox="0 0 24 24"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"/></svg>Gráfico</div>
+            <div class="tab"><svg viewBox="0 0 24 24"><path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-1.99 2L3 20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V9h14v11z"/></svg>Futuros</div>
+            <div class="tab"><svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>Tendência</div>
+            <div class="tab"><svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-5.97 4.06L14.09 6l1.41 1.41L16.91 6l1.06 1.06-1.41 1.41 1.41 1.41-1.06 1.06-1.41-1.4-1.41 1.41-1.06-1.06 1.41-1.41-1.41-1.42zM6.25 7.72h5v1.5h-5v-1.5zM11.5 16h-2v2H8v-2H6v-1.5h2v-2h1.5v2h2V16zm6.5 1.25h-5v-1.5h5v1.5zm0-2.5h-5v-1.5h5v1.5z"/></svg>Calcular</div>
+          </div>
+        </div>
+      </div>
+      <p class="small" style="text-align:center;margin-top:12px">Tela inicial com os dados de hoje, carregados do repositório</p>
+    </div>
+  </div>
+
+  <!-- ================= RECURSOS ================= -->
+  <section id="recursos">
+    <h2>Tudo o que o produtor precisa, numa tela só</h2>
+    <p class="sec-lead">Pensado para quem vende café no Espírito Santo e não quer acompanhar bolsa o dia inteiro.</p>
+    <div class="grid">
+      <div class="feat">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div>
+        <h3>Preço do dia no CCCV</h3>
+        <p>Conilon 7/8, arábica dura e arábica rio em Vitória, com a variação desde o dia anterior e o valor das suas sacas.</p>
+      </div>
+      <div class="feat">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-1.99 2L3 20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V9h14v11z"/></svg></div>
+        <h3>Hoje × futuro</h3>
+        <p>Cada vencimento de Londres e Nova York convertido para R$/saca no CCCV: acima ou abaixo do preço de hoje, e quanto.</p>
+      </div>
+      <div class="feat">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg></div>
+        <h3>O que o mercado espera</h3>
+        <p>Expectativa do mercado mundial e do Espírito Santo, com seta de alta ou queda e uma explicação curta.</p>
+      </div>
+      <div class="feat">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg></div>
+        <h3>Boletim diário com IA</h3>
+        <p>Todo dia útil às 6h40: notícias do café (Vietnã, clima no ES, safra, fundos, dólar) resumidas em linguagem de produtor, com as fontes.</p>
+      </div>
+      <div class="feat">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"/></svg></div>
+        <h3>Gráfico do conilon</h3>
+        <p>Histórico do conilon e do arábica dura no CCCV, que cresce um dia por vez, e o arábica em Nova York com médias móveis.</p>
+      </div>
+      <div class="feat">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM11.5 16h-2v2H8v-2H6v-1.5h2v-2h1.5v2h2V16zm6.5 1.25h-5v-1.5h5v1.5zm0-2.5h-5v-1.5h5v1.5zM11.25 9.22h-5v-1.5h5v1.5z"/></svg></div>
+        <h3>Calculadora de venda</h3>
+        <p>Quanto rendem suas sacas hoje no CCCV e quanto dariam a mais ou a menos em cada vencimento futuro.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= HOJE × FUTURO (ao vivo) ================= -->
+  <section id="futuro">
+    <div class="split">
+      <div>
+        <h2>Vai subir ou vai cair?</h2>
+        <p class="sec-lead" style="margin-bottom:14px">
+          O app pega o preço que o mercado de Londres paga hoje para entrega em cada mês e converte para o CCCV,
+          somando a diferença atual entre Vitória e a bolsa. Assim dá para ver, em reais por saca, se o mercado
+          está pagando mais ou menos que hoje nos próximos meses.
+        </p>
+        <p class="small">CCCV estimado = vencimento da bolsa em R$/saca + diferencial de hoje (CCCV − bolsa), com o dólar do dia.
+          É o que o mercado indica hoje, não uma garantia: clima, safra e dólar mudam o preço.</p>
+      </div>
+      <div class="chart-card">
+        <h3>Conilon: hoje × futuro (R$/saca)</h3>
+        <div class="small" id="fut-sub">Carregando dados de hoje…</div>
+        <svg id="fut-chart" viewBox="0 0 520 230" width="100%" role="img" aria-label="Gráfico do preço de hoje e dos vencimentos futuros"></svg>
+        <div class="legend"><span><i style="background:var(--gold)"></i>Hoje</span><span><i style="background:var(--up)"></i>Acima de hoje</span><span><i style="background:var(--down)"></i>Abaixo de hoje</span></div>
+        <div class="reading" id="fut-reading"></div>
+        <table id="fut-table"></table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COMO FUNCIONA ================= -->
+  <section id="como-funciona">
+    <h2>Como funciona</h2>
+    <p class="sec-lead">Os números vêm sempre das fontes. A inteligência artificial só interpreta e resume as notícias.</p>
+    <div class="flow">
+      <div class="step"><h3>Coleta automática</h3><p>Três vezes por dia, um coletor busca o CCCV, os vencimentos de Londres e Nova York, o dólar e outras commodities.</p></div>
+      <div class="step"><h3>Comparação</h3><p>Cada vencimento é convertido para R$/saca no CCCV e comparado com o preço de hoje.</p></div>
+      <div class="step"><h3>Boletim do dia</h3><p>Às 6h40 um agente de IA lê os números, pesquisa as notícias e escreve o boletim em linguagem simples.</p></div>
+      <div class="step"><h3>No celular</h3><p>O app junta tudo e atualiza sozinho a cada minuto enquanto está aberto.</p></div>
+    </div>
+    <div style="margin-top:26px">
+      <h3 style="margin:0 0 12px;font-size:16px;color:var(--muted);font-weight:600">Fontes de dados</h3>
+      <div class="sources">
+        <div class="src"><b>CCCV</b><span>Físico em Vitória/ES</span></div>
+        <div class="src"><b>ICE Londres</b><span>Robusta / conilon</span></div>
+        <div class="src"><b>ICE Nova York</b><span>Arábica</span></div>
+        <div class="src"><b>Dólar comercial</b><span>USD/BRL</span></div>
+        <div class="src"><b>Notícias</b><span>Clima, safra, Vietnã</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= BAIXAR ================= -->
+  <section id="baixar">
+    <div class="download">
+      <div>
+        <h2>Baixe e instale</h2>
+        <p style="color:#D9D2C8;margin-top:0">O app ainda não está na Play Store: a instalação é pelo arquivo APK, direto no celular.</p>
+        <a class="btn btn-gold" href="download/CafeAnalise.apk" download>
+          <svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+          Baixar CafeAnalise.apk
+        </a>
+        <div class="req"><span class="chip">Android 7.0+</span><span class="chip">~9 MB</span><span class="chip">Gratuito</span><span class="chip">Sem cadastro</span></div>
+      </div>
+      <div>
+        <ol>
+          <li>Abra esta página <strong>no celular</strong> e toque em <strong>Baixar</strong>.</li>
+          <li>Abra o arquivo baixado. Se o Android pedir, toque em <strong>Configurações</strong> e ative <strong>Permitir desta fonte</strong>.</li>
+          <li>Toque em <strong>Instalar</strong>. Se o Play Protect avisar, escolha <strong>Mais detalhes › Instalar mesmo assim</strong> (acontece com todo app fora da Play Store).</li>
+          <li>Para atualizar, baixe de novo e instale por cima: suas configurações continuam.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap row">
+    <span>Café Análise · feito no Espírito Santo para o produtor de conilon e arábica.</span>
+    <span>Informação de apoio à decisão; não é recomendação de compra ou venda. Cotações da bolsa com atraso.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var RAW = "https://raw.githubusercontent.com/gustavosarti/cafe-analise-dados/main/";
+  var brl = function (v) { return "R$ " + Number(v).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
+  var pct = function (v) { return (v > 0 ? "+" : "") + Number(v).toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%"; };
+  var $ = function (id) { return document.getElementById(id); };
+  var tend = function (t) {
+    t = (t || "").toLowerCase();
+    if (t === "alta") return ["▲ tendência de alta", "up"];
+    if (t === "queda") return ["▼ tendência de queda", "down"];
+    if (t) return ["▶ tendência estável", "flat"];
+    return ["", "flat"];
+  };
+  var MESES = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
+  var DIAS = ["Domingo","Segunda-feira","Terça-feira","Quarta-feira","Quinta-feira","Sexta-feira","Sábado"];
+  var hoje = new Date();
+  $("ph-data").textContent = DIAS[hoje.getDay()] + ", " + hoje.getDate() + " de " + MESES[hoje.getMonth()];
+  $("ph-hora").textContent = hoje.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+
+  fetch(RAW + "dados/mercado.json", { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (d) {
+    var c = d.cccv; if (!c || !c.ultimo) return;
+    var u = c.ultimo, a = c.anterior || {};
+    var dia = u.dia + " de " + (c.mes || "");
+    $("ph-preco").textContent = brl(u.conilon);
+    $("ph-cccv-dia").textContent = "CCCV · " + dia;
+    $("ph-cccv-dia2").textContent = dia;
+    $("ph-sacas").textContent = "100 sacas valem hoje " + brl(u.conilon * 100);
+    if (a.conilon) {
+      var dv = u.conilon - a.conilon, el = $("ph-var");
+      el.textContent = dv > 0 ? "▲ Subiu " + brl(dv) + " desde o dia anterior" : dv < 0 ? "▼ Caiu " + brl(-dv) + " desde o dia anterior" : "Igual ao dia anterior";
+      el.className = "m-row " + (dv > 0 ? "up" : dv < 0 ? "down" : "flat");
+      $("live-var").textContent = (dv >= 0 ? "▲ " : "▼ ") + pct((u.conilon / a.conilon - 1) * 100);
+      $("live-var").className = "m-row " + (dv > 0 ? "up" : dv < 0 ? "down" : "flat");
+    }
+    $("ph-dura").textContent = u.dura ? brl(u.dura) : "—";
+    $("ph-rio").textContent = u.rio ? brl(u.rio) : "—";
+    $("ph-con").textContent = u.conilon ? brl(u.conilon) : "—";
+    $("live-price").textContent = brl(u.conilon) + " a saca";
+    $("live-date").textContent = "Preço de " + dia;
+    $("live").hidden = false;
+
+    // ---- gráfico hoje × futuro
+    var h = d.hoje_x_futuro && d.hoje_x_futuro.conilon;
+    if (!h || !h.vencimentos || !h.vencimentos.length || h.hoje_cccv == null) return;
+    var pts = [{ l: "Hoje", v: h.hoje_cccv }].concat(h.vencimentos.filter(function (x) { return x.cccv_estimado != null; })
+      .map(function (x) { return { l: x.vencimento, v: x.cccv_estimado, p: x.vs_hoje_cccv_pct }; }));
+    if (pts.length < 2) return;
+    var W = 520, H = 230, L = 10, R = 64, T = 14, B = 30;
+    var vals = pts.map(function (p) { return p.v; });
+    var mn = Math.min.apply(null, vals), mx = Math.max.apply(null, vals), pad = (mx - mn || 10) * 0.15;
+    mn -= pad; mx += pad;
+    var x = function (i) { return L + i * (W - L - R) / (pts.length - 1); };
+    var y = function (v) { return T + (mx - v) / (mx - mn) * (H - T - B); };
+    var s = "";
+    for (var k = 0; k <= 4; k++) {
+      var gv = mn + (mx - mn) * k / 4, gy = y(gv);
+      s += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + gy + '" y2="' + gy + '" stroke="rgba(255,255,255,.08)"/>';
+      s += '<text x="' + (W - R + 8) + '" y="' + (gy + 4) + '" fill="#9A938A" font-size="14">' + Math.round(gv).toLocaleString("pt-BR") + '</text>';
+    }
+    s += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y(h.hoje_cccv) + '" y2="' + y(h.hoje_cccv) + '" stroke="#9A938A" stroke-dasharray="6 6"/>';
+    s += '<polyline fill="none" stroke="#F2B233" stroke-width="3" stroke-linejoin="round" points="' + pts.map(function (p, i) { return x(i) + "," + y(p.v); }).join(" ") + '"/>';
+    pts.forEach(function (p, i) {
+      var col = i === 0 ? "#F2B233" : p.v > h.hoje_cccv * 1.001 ? "#5BC46A" : p.v < h.hoje_cccv * 0.999 ? "#E5675F" : "#9A938A";
+      s += '<circle cx="' + x(i) + '" cy="' + y(p.v) + '" r="5" fill="' + col + '"/>';
+      if (i === 0 || i === pts.length - 1 || i === Math.floor((pts.length - 1) / 2))
+        s += '<text x="' + x(i) + '" y="' + (H - 8) + '" fill="#9A938A" font-size="14" text-anchor="' + (i === 0 ? "start" : i === pts.length - 1 ? "end" : "middle") + '">' + p.l + '</text>';
+    });
+    $("fut-chart").innerHTML = s;
+    $("fut-sub").textContent = "Conilon 7/8 no CCCV: preço de hoje (" + dia + ") e estimativa para cada vencimento de Londres";
+    var fut = pts.slice(1), acima = fut.filter(function (p) { return p.v > h.hoje_cccv * 1.001; }).length, abaixo = fut.filter(function (p) { return p.v < h.hoje_cccv * 0.999; }).length;
+    var rd = $("fut-reading");
+    if (abaixo && !acima) { rd.textContent = "Todos os vencimentos estão ABAIXO do preço de hoje: o mercado espera preço menor."; rd.className = "reading down"; }
+    else if (acima && !abaixo) { rd.textContent = "Todos os vencimentos estão ACIMA do preço de hoje: o mercado espera preço maior."; rd.className = "reading up"; }
+    else { rd.textContent = acima + " vencimento(s) acima e " + abaixo + " abaixo do preço de hoje."; rd.className = "reading flat"; }
+    var t = "<tr><th>Venc.</th><th>R$/saca</th><th>vs. hoje</th></tr><tr><td style='color:#F3EEE8'>Hoje</td><td>" + brl(h.hoje_cccv).replace("R$ ", "") + "</td><td style='color:#9A938A'>—</td></tr>";
+    fut.forEach(function (p) {
+      var dif = p.v - h.hoje_cccv, cls = dif > 0.5 ? "up" : dif < -0.5 ? "down" : "flat";
+      t += "<tr><td>" + p.l + "</td><td>" + brl(p.v).replace("R$ ", "") + "</td><td class='" + cls + "'>" + (dif >= 0 ? "+" : "−") + Math.abs(dif).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " (" + pct(p.p) + ")</td></tr>";
+    });
+    $("fut-table").innerHTML = t;
+  }).catch(function () {});
+
+  fetch(RAW + "boletim/boletim.json", { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (b) {
+    if (!b || !b.resumo) return;
+    $("ph-bol-t").textContent = b.titulo || "Boletim do dia";
+    $("ph-bol-r").textContent = b.resumo;
+    var e = b.expectativa || {};
+    if (e.mundo && e.mundo.texto) { var m = tend(e.mundo.tendencia); $("ph-mundo-t").textContent = m[0]; $("ph-mundo-t").className = m[1]; $("ph-mundo").textContent = e.mundo.texto; }
+    if (e.espirito_santo && e.espirito_santo.texto) { var es = tend(e.espirito_santo.tendencia); $("ph-es-t").textContent = es[0]; $("ph-es-t").className = es[1]; $("ph-es").textContent = e.espirito_santo.texto; }
+  }).catch(function () {});
+})();
+</script>
+</body>
+</html>
