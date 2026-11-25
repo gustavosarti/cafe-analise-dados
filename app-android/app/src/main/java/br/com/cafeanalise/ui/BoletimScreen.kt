@@ -50,7 +50,10 @@ fun BoletimCard(b: Boletim, onOpen: () -> Unit) {
             Text(boletimDataLabel(b), fontSize = 12.sp, color = Muted)
         }
         if (b.titulo.isNotBlank()) Text(b.titulo, fontSize = 17.sp, fontWeight = FontWeight.Bold)
-        Text(b.resumo, fontSize = 15.sp, color = TextMain, modifier = Modifier.padding(top = 4.dp))
+        Text(
+            b.resumo, fontSize = 15.sp, color = TextMain, modifier = Modifier.padding(top = 4.dp),
+            maxLines = 5, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis,
+        )
         val (tend, cor) = tendenciaVisual(b.conilonTendencia)
         if (tend.isNotBlank()) {
             Text("Conilon: $tend", fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = cor, modifier = Modifier.padding(top = 8.dp))

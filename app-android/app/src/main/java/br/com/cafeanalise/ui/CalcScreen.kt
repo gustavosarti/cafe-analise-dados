@@ -135,16 +135,22 @@ private fun CalcResults(state: UiState, settings: Settings, p: CccvProduct, c: C
                 "Estimativa: futuro de $bolsaName em R$ + diferencial de hoje (${if (basis >= 0) "+" else "−"}${brl(kotlin.math.abs(basis))})",
             )
             Row(Modifier.fillMaxWidth().padding(bottom = 4.dp)) {
-                Text("Venc.", Modifier.weight(1f), color = Muted)
-                Text("R$/saca", Modifier.weight(1.2f), color = Muted, textAlign = TextAlign.End)
-                Text("Total", Modifier.weight(1.4f), color = Muted, textAlign = TextAlign.End)
+                Text("Venc.", Modifier.weight(0.8f), color = Muted)
+                Text("Total", Modifier.weight(1.3f), color = Muted, textAlign = TextAlign.End)
+                Text("vs. vender hoje", Modifier.weight(1.4f), color = Muted, textAlign = TextAlign.End)
+            }
+            Row(Modifier.fillMaxWidth().padding(vertical = 4.dp)) {
+                Text("Hoje", Modifier.weight(0.8f), color = TextMain)
+                Text(brl(total), Modifier.weight(1.3f), textAlign = TextAlign.End)
+                Text("—", Modifier.weight(1.4f), color = Muted, textAlign = TextAlign.End)
             }
             curve.forEach { cp ->
                 val est = m.usdPerBag(cp.price) * fx + basis
+                val diff = est * sacas - total
                 Row(Modifier.fillMaxWidth().padding(vertical = 4.dp)) {
-                    Text(cp.expiry.label(), Modifier.weight(1f), color = Gold)
-                    Text(brl(est), Modifier.weight(1.2f), textAlign = TextAlign.End)
-                    Text(brl(est * sacas), Modifier.weight(1.4f), textAlign = TextAlign.End)
+                    Text(cp.expiry.label(), Modifier.weight(0.8f), color = Gold)
+                    Text(brl(est * sacas), Modifier.weight(1.3f), textAlign = TextAlign.End)
+                    Text(brlSigned(diff), Modifier.weight(1.4f), textAlign = TextAlign.End, color = changeColor(diff / total * 100))
                 }
             }
             Text(

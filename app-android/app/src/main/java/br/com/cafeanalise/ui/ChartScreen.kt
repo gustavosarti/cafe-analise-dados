@@ -20,6 +20,8 @@ import androidx.compose.ui.unit.dp
 import br.com.cafeanalise.UiState
 import br.com.cafeanalise.analysis.Analytics
 import br.com.cafeanalise.data.Market
+import br.com.cafeanalise.data.cccvSerie
+import br.com.cafeanalise.util.brl
 import br.com.cafeanalise.util.fmt
 import br.com.cafeanalise.util.monthYear
 import br.com.cafeanalise.util.pct
@@ -29,35 +31,86 @@ enum class Range(val label: String, val days: Int) {
     M1("1M", 22), M3("3M", 66), M6("6M", 130), Y1("1A", 260), Y2("2A", 520)
 }
 
+/** O que o gráfico mostra: físico no CCCV (onde a família vende) ou a bolsa de NY. */
+enum class ChartSource(val label: String) { CONILON("Conilon CCCV"), DURA("Dura CCCV"), NY("Arábica NY") }
+
 @Composable
 fun ChartScreen(state: UiState) {
-    var market by rememberSaveable { mutableStateOf(Market.ARABICA) }
+    var source by rememberSaveable { mutableStateOf(ChartSource.CONILON) }
     var range by rememberSaveable { mutableStateOf(Range.M6) }
-    val q = state.quote(market)
 
     Column(
         Modifier.verticalScroll(rememberScrollState()).padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
-        MarketSelector(market) { market = it }
-        ChipRow(Range.entries.toList(), range, { it.label }) { range = it }
+        ChipRow(ChartSource.entries.toList(), source, { it.label }) { source = it }
 
-        if (q == null || !q.hasHistory) {
-            SectionCard {
-                Text(
-                    when {
-                        state.loading -> "Carregando…"
-                        q != null -> "A fonte gratuita da robusta (TradingView) não fornece o histórico diário, então não há gráfico. " +
-                            "A cotação do dia e os indicadores estão nas abas Hoje e Projeção."
-                        else -> "Sem dados para este mercado."
-                    },
-                    color = Muted,
-                )
+        if (source == ChartSource.NY) {
+            ChipRow(Range.entries.toList(), range, { it.label }) { range = it }
+            val q = state.quote(Market.ARABICA)
+            if (q == null || !q.hasHistory) {
+                SectionCard { Text(if (state.loading) "Carregando…" else "Sem dados de Nova York no momento.", color = Muted) }
+            } else {
+                ChartContent(q, Market.ARABICA, range)
             }
         } else {
-            ChartContent(q, market, range)
+            CccvChart(state, source)
         }
     }
+}
+
+/** Gráfico do preço físico no CCCV (histórico do coletor + tabela do mês). */
+@Composable
+private fun CccvChart(state: UiState, source: ChartSource) {
+    val serie = cccvSerie(state.historico, state.cccv?.getOrNull())
+        .mapNotNull { p -> (if (source == ChartSource.CONILON) p.conilon else p.dura)?.let { p.date to it } }
+    val nome = if (source == ChartSource.CONILON) "Conilon 7/8" else "Arábica dura"
+    if (serie.size < 2) {
+        SectionCard { Text(if (state.loading) "Carregando…" else "Ainda não há dias suficientes do CCCV para o gráfico.", color = Muted) }
+        return
+    }
+    val values = serie.map { it.second }
+    val last = values.lastIndex
+    SectionCard {
+        SectionTitle("$nome no CCCV — R$/saca", "${serie.first().first.short()} a ${serie.last().first.short()} · ${serie.size} pregões")
+        LineChart(
+            series = listOf(ChartSeries(values, Gold, 2.5f)),
+            modifier = Modifier.fillMaxWidth().height(240.dp),
+            xLabels = buildList {
+                add(0 to serie.first().first.short())
+                if (last >= 4) add(last / 2 to serie[last / 2].first.short())
+                add(last to serie.last().first.short())
+            },
+            decimals = 0,
+            showDots = values.size <= 40,
+        )
+    }
+    SectionCard {
+        SectionTitle("Resumo do período")
+        val varPct = Analytics.pctDiff(values.last(), values.first())
+        val varRs = values.last() - values.first()
+        KeyValue("Último preço (${serie.last().first.short()})", brl(values.last()), Gold, bold = true)
+        KeyValue("Variação no período", "${brlSigned(varRs)} (${varPct.pct(1)})", changeColor(varPct), bold = true)
+        KeyValue("Máxima", brl(values.max()))
+        KeyValue("Mínima", brl(values.min()))
+        KeyValue("Média", brl(values.average()))
+        if (values.size >= 6) {
+            val semana = Analytics.pctDiff(values.last(), values[values.size - 6])
+            KeyValue("Últimos 5 pregões", semana.pct(1), changeColor(semana))
+        }
+    }
+    SectionCard {
+        SectionTitle("Últimos pregões")
+        serie.takeLast(6).reversed().zipWithNext().forEach { (atual, anterior) ->
+            val d = atual.second - anterior.second
+            Row(Modifier.fillMaxWidth().padding(vertical = 4.dp)) {
+                Text(atual.first.short(), Modifier.weight(1f), color = Gold)
+                Text(brl(atual.second), Modifier.weight(1.2f), textAlign = androidx.compose.ui.text.style.TextAlign.End)
+                Text(brlSigned(d), Modifier.weight(1.2f), color = changeColor(d), textAlign = androidx.compose.ui.text.style.TextAlign.End)
+            }
+        }
+    }
+    Disclaimer("O histórico do CCCV cresce um dia por vez: o app junta a tabela do mês com os dias guardados pelo coletor desde 25/11/2026.")
 }
 
 @Composable

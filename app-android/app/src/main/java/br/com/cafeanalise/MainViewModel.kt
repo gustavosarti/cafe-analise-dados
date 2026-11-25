@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.cafeanalise.data.Boletim
+import br.com.cafeanalise.data.CccvPoint
 import br.com.cafeanalise.data.CccvQuote
 import br.com.cafeanalise.data.CurvePoint
 import br.com.cafeanalise.data.FxRate
@@ -30,6 +31,8 @@ data class UiState(
     val fx: Result<FxRate>? = null,
     val cccv: Result<CccvQuote>? = null,
     val boletim: Result<Boletim>? = null,
+    /** Histórico do CCCV salvo pelo coletor (cresce um dia por vez). */
+    val historico: List<CccvPoint> = emptyList(),
     /** Curva de futuros do arábica (NY, US¢/lb). */
     val curve: List<CurvePoint> = emptyList(),
     /** Curva de futuros da robusta (Londres, US$/t). */
@@ -39,7 +42,16 @@ data class UiState(
 ) {
     fun quote(m: Market): Quote? = quotes[m]?.getOrNull()
     val usdBrl: Double? get() = fx?.getOrNull()?.bid
-    fun curve(m: Market): List<CurvePoint> = if (m == Market.ARABICA) curve else robustaCurve
+    /**
+     * Vencimentos futuros para comparar com hoje. O primeiro contrato costuma ser o próprio "contínuo"
+     * (a referência do preço de hoje, ex.: Jan/27 na robusta); ele não diz nada sobre o futuro e é descartado.
+     */
+    fun curve(m: Market): List<CurvePoint> {
+        val raw = if (m == Market.ARABICA) curve else robustaCurve
+        val ref = quote(m)?.price ?: return raw
+        val first = raw.firstOrNull() ?: return raw
+        return if (kotlin.math.abs(first.price / ref - 1) < 0.005) raw.drop(1) else raw
+    }
 }
 
 class MainViewModel(app: Application) : AndroidViewModel(app) {
@@ -89,19 +101,23 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
                 val f = async(Dispatchers.IO) { runCatching { MarketApi.usdBrl() } }
                 val c = async(Dispatchers.IO) { runCatching { MarketApi.cccv() } }
                 val bol = async(Dispatchers.IO) { runCatching { MarketApi.boletim() } }
+                val hist = async(Dispatchers.IO) { runCatching { MarketApi.historico() }.getOrDefault(emptyList()) }
                 val arabica = a.await()
                 val robusta = r.await()
                 val fx = f.await()
                 val cccv = c.await()
                 val boletim = bol.await()
+                val historico = hist.await()
                 _state.update {
                     it.copy(
                         loading = false,
                         quotes = mapOf(Market.ARABICA to arabica, Market.ROBUSTA to robusta),
                         fx = fx,
-                        cccv = cccv,
+                        // Se o CCCV falhar (site lento), mantém o último preço carregado.
+                        cccv = if (cccv.isSuccess || it.cccv?.isSuccess != true) cccv else it.cccv,
                         // Se falhar, mantém o boletim anterior.
                         boletim = if (boletim.isSuccess || it.boletim == null) boletim else it.boletim,
+                        historico = historico.ifEmpty { it.historico },
                         updatedAt = LocalDateTime.now(),
                     )
                 }

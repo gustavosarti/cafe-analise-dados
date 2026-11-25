@@ -165,7 +165,9 @@ object MarketApi {
      * Os dados vêm direto do HTML de https://www.cccv.org.br/cotacao/
      */
     fun cccv(): CccvQuote {
-        val html = get("https://www.cccv.org.br/cotacao/", "text/html")
+        // O site do CCCV às vezes demora: tenta uma segunda vez antes de desistir.
+        val html = runCatching { get("https://www.cccv.org.br/cotacao/", "text/html") }
+            .getOrElse { Thread.sleep(1500); get("https://www.cccv.org.br/cotacao/", "text/html") }
         fun clean(s: String) = s
             .replace(Regex("<[^>]+>"), " ")
             .replace("&nbsp;", " ").replace("&#160;", " ")
@@ -201,6 +203,29 @@ object MarketApi {
         val valid = days.filter { it.dura != null || it.rio != null || it.conilon != null }.sortedBy { it.day }
         if (valid.isEmpty()) throw IOException("tabela de cotação não encontrada")
         return CccvQuote(monthName, year, valid, avg?.getOrNull(0), avg?.getOrNull(1), avg?.getOrNull(2))
+    }
+
+    /**
+     * Histórico diário do CCCV gravado pelo coletor (dados/historico.csv).
+     * Colunas: data,cccv_dia,conilon,dura,rio,... — "cccv_dia" é o dia do preço publicado pelo CCCV.
+     */
+    fun historico(): List<CccvPoint> {
+        val csv = get("https://raw.githubusercontent.com/gustavosarti/cafe-analise-dados/main/dados/historico.csv", "text/plain")
+        val lines = csv.lines().filter { it.isNotBlank() }
+        if (lines.size < 2) return emptyList()
+        val head = lines.first().split(',')
+        fun idx(n: String) = head.indexOf(n)
+        val iData = idx("data"); val iDia = idx("cccv_dia"); val iCon = idx("conilon"); val iDura = idx("dura"); val iRio = idx("rio")
+        return lines.drop(1).mapNotNull { line ->
+            val c = line.split(',')
+            val coleta = runCatching { LocalDate.parse(c.getOrNull(iData)) }.getOrNull() ?: return@mapNotNull null
+            val dia = c.getOrNull(iDia)?.toDoubleOrNull()?.toInt() ?: return@mapNotNull null
+            // Se o dia do CCCV é maior que o dia da coleta, o preço é do mês anterior.
+            val base = if (dia > coleta.dayOfMonth) coleta.minusMonths(1) else coleta
+            val date = runCatching { base.withDayOfMonth(dia) }.getOrNull() ?: return@mapNotNull null
+            fun d(i: Int) = c.getOrNull(i)?.toDoubleOrNull()
+            CccvPoint(date, d(iDura), d(iRio), d(iCon))
+        }
     }
 
     /** Boletim diário publicado pelo agente no GitHub. */

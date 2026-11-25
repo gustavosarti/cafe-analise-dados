@@ -147,3 +147,33 @@ data class Boletim(
 ) {
     val disponivel: Boolean get() = data.isNotBlank() && resumo.isNotBlank()
 }
+
+/** Um dia de preço físico no CCCV (R$/saca). */
+data class CccvPoint(val date: java.time.LocalDate, val dura: Double?, val rio: Double?, val conilon: Double?)
+
+private val MESES_PT = listOf(
+    "janeiro", "fevereiro", "março", "abril", "maio", "junho",
+    "julho", "agosto", "setembro", "outubro", "novembro", "dezembro",
+)
+
+/** Número do mês a partir do nome em português ("novembro" → 11). */
+fun mesNumero(nome: String): Int? = MESES_PT.indexOf(nome.trim().lowercase()).takeIf { it >= 0 }?.plus(1)
+
+/**
+ * Série diária do CCCV: junta o histórico salvo pelo coletor (dados/historico.csv) com a tabela do mês atual.
+ * A tabela do mês tem prioridade quando o mesmo dia aparece nos dois.
+ */
+fun cccvSerie(historico: List<CccvPoint>, mes: CccvQuote?): List<CccvPoint> {
+    val map = sortedMapOf<java.time.LocalDate, CccvPoint>()
+    historico.forEach { map[it.date] = it }
+    val m = mes?.let { mesNumero(it.monthName) }
+    val y = mes?.year
+    if (mes != null && m != null && y != null) {
+        mes.days.forEach { d ->
+            runCatching { java.time.LocalDate.of(y, m, d.day) }.getOrNull()?.let { date ->
+                map[date] = CccvPoint(date, d.dura, d.rio, d.conilon)
+            }
+        }
+    }
+    return map.values.toList()
+}

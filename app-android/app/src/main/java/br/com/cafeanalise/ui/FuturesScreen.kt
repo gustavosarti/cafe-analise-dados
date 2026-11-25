@@ -93,6 +93,8 @@ fun FuturesScreen(state: UiState, settings: Settings) {
                     )
                 }
 
+                if (tvf != null && tvf.inCccv) WaitCard(tvf, settings, product.title)
+
                 SectionCard {
                     val basis = cccvBasis(state, m)
                     SectionTitle(
@@ -101,25 +103,7 @@ fun FuturesScreen(state: UiState, settings: Settings) {
                             "(${if (basis >= 0) "+" else "−"}${brl(kotlin.math.abs(basis))})"
                         else "Estimativa do CCCV indisponível (falta CCCV, bolsa ou dólar)",
                     )
-                    Row(Modifier.fillMaxWidth().padding(bottom = 4.dp)) {
-                        Cell("Venc.", 0.9f, Muted, TextAlign.Start)
-                        Cell(m.unit, 1f, Muted)
-                        Cell("CCCV est.", 1.3f, Muted)
-                        Cell("vs. hoje", 0.9f, Muted)
-                    }
-                    HorizontalDivider(color = CardBorder)
-                    val ref = state.quote(m)?.price ?: curve.first().price
-                    val cccvHoje = state.cccv?.getOrNull()?.last?.let { product.price(it) }
-                    curve.forEach { c ->
-                        val est = cccvEstimate(state, m, c.price)
-                        val vs = if (est != null && cccvHoje != null) Analytics.pctDiff(est, cccvHoje) else Analytics.pctDiff(c.price, ref)
-                        Row(Modifier.fillMaxWidth().padding(vertical = 6.dp)) {
-                            Cell(c.expiry.label(), 0.9f, Gold, TextAlign.Start)
-                            Cell(c.price.fmt(m.decimals), 1f)
-                            Cell(est?.let { brl(it) } ?: "—", 1.3f)
-                            Cell(vs.pct(1), 0.9f, changeColor(vs))
-                        }
-                    }
+                    FutureTable(state, m, showBolsa = true)
                 }
             }
         }
@@ -127,8 +111,8 @@ fun FuturesScreen(state: UiState, settings: Settings) {
         SectionCard {
             SectionTitle("Como ler")
             Text(
-                "• Vencimentos mais baratos que hoje (backwardation): o mercado espera preço menor à frente — tende a favorecer vender agora.\n" +
-                    "• Vencimentos mais caros (contango): o mercado paga mais para entrega futura — pode valer travar preço.\n" +
+                "• Vencimentos abaixo do preço de hoje: o mercado está pagando menos para entregar mais tarde, ou seja, espera preço menor à frente.\n" +
+                    "• Vencimentos acima do preço de hoje: o mercado paga mais para entregar mais tarde, ou seja, espera preço maior à frente.\n" +
                     "• O CCCV estimado supõe que o dólar e o diferencial de Vitória fiquem como hoje.",
                 style = MaterialTheme.typography.bodySmall, color = TextMain,
             )
@@ -224,4 +208,70 @@ fun readingVsToday(t: TodayVsFuture): Pair<String, Int> {
 @Composable
 private fun RowScope.Cell(text: String, weight: Float, color: Color = TextMain, align: TextAlign = TextAlign.End) {
     Text(text, Modifier.weight(weight), color = color, textAlign = align, style = MaterialTheme.typography.bodyMedium)
+}
+
+/** Diferença em R$ com sinal: "+R$ 12,30" / "−R$ 8,00". */
+fun brlSigned(v: Double): String = (if (v >= 0) "+" else "−") + brl(kotlin.math.abs(v))
+
+/**
+ * Tabela de vencimentos comparada com hoje: preço estimado no CCCV e a diferença em R$/saca (e %).
+ * O contrato de referência (o próprio "preço de hoje" da bolsa) já vem fora da curva.
+ */
+@Composable
+fun FutureTable(state: UiState, m: Market, showBolsa: Boolean = false) {
+    val t = todayVsFuture(state, m) ?: return
+    Row(Modifier.fillMaxWidth().padding(bottom = 4.dp)) {
+        Cell("Venc.", 0.8f, Muted, TextAlign.Start)
+        if (showBolsa) Cell(m.unit, 0.9f, Muted)
+        Cell(if (t.inCccv) "R$/saca" else m.unit, 1.1f, Muted)
+        Cell("vs. hoje", 1.2f, Muted)
+    }
+    HorizontalDivider(color = CardBorder)
+    Row(Modifier.fillMaxWidth().padding(vertical = 6.dp)) {
+        Cell("Hoje", 0.8f, TextMain, TextAlign.Start)
+        if (showBolsa) Cell("—", 0.9f, Muted)
+        Cell(t.fmt(t.today).removePrefix("R$ "), 1.1f, TextMain)
+        Cell("—", 1.2f, Muted)
+    }
+    t.points.forEach { (c, v) ->
+        val diff = v - t.today
+        val pct = t.pctVsToday(v)
+        Row(Modifier.fillMaxWidth().padding(vertical = 6.dp)) {
+            Cell(c.expiry.label(), 0.8f, Gold, TextAlign.Start)
+            if (showBolsa) Cell(c.price.fmt(m.decimals), 0.9f)
+            Cell(t.fmt(v).removePrefix("R$ "), 1.1f)
+            Cell(
+                if (t.inCccv) "${brlSigned(diff).replace("R$ ", "")} (${pct.pct(1)})" else pct.pct(1),
+                1.2f, changeColor(pct),
+            )
+        }
+    }
+}
+
+/** "Esperar compensa?": valor das sacas hoje × no vencimento que paga mais e no último vencimento. */
+@Composable
+private fun WaitCard(t: TodayVsFuture, settings: Settings, produto: String) {
+    if (t.points.isEmpty()) return
+    val sacas = settings.sacas.takeIf { it > 0 } ?: 100.0
+    val best = t.points.maxBy { it.second }
+    val last = t.points.last()
+    SectionCard {
+        SectionTitle("Esperar compensa?", "$produto · ${sacas.fmt(if (sacas % 1.0 == 0.0) 0 else 1)} sacas (altere na aba Calcular)")
+        KeyValue("Vendendo hoje", brl(t.today * sacas), bold = true)
+        val dBest = (best.second - t.today) * sacas
+        KeyValue("No vencimento que paga mais (${best.first.expiry.label()})", brl(best.second * sacas))
+        Text(
+            (if (dBest >= 0) "▲ " else "▼ ") + brlSigned(dBest) + " em relação a hoje",
+            color = changeColor(dBest), fontWeight = FontWeight.SemiBold, style = MaterialTheme.typography.bodyMedium,
+        )
+        if (last.first != best.first) {
+            val dLast = (last.second - t.today) * sacas
+            KeyValue("No último vencimento (${last.first.expiry.label()})", brl(last.second * sacas) + "  (" + brlSigned(dLast) + ")", changeColor(dLast))
+        }
+        Text(
+            if (dBest <= 0) "Pelo mercado futuro, nenhum vencimento paga mais do que o preço de hoje."
+            else "Pelo mercado futuro, há vencimento pagando mais do que hoje. Lembre que isso exige travar o preço e que o dólar e o diferencial do CCCV podem mudar.",
+            style = MaterialTheme.typography.bodySmall, color = Muted, modifier = Modifier.padding(top = 6.dp),
+        )
+    }
 }

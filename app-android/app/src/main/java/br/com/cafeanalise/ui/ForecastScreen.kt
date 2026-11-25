@@ -122,9 +122,9 @@ private fun ForecastContent(state: UiState, settings: Settings, m: Market, q: Qu
         }
 
         // comparação com o mercado futuro (só arábica)
-        if (m == Market.ARABICA && state.curve.isNotEmpty()) {
+        if (m == Market.ARABICA && state.curve(Market.ARABICA).isNotEmpty()) {
             val target = YearMonth.now().plusMonths(3)
-            val c = state.curve.minByOrNull { kotlin.math.abs(it.expiry.toEpochMonth() - target.toEpochMonth()) }
+            val c = state.curve(Market.ARABICA).minByOrNull { kotlin.math.abs(it.expiry.toEpochMonth() - target.toEpochMonth()) }
             if (c != null) {
                 Text(
                     "Mercado futuro: o vencimento ${c.expiry.label()} está em ${c.price.fmt(2)} ¢/lb " +
@@ -156,7 +156,7 @@ private fun ForecastContent(state: UiState, settings: Settings, m: Market, q: Qu
 private fun RobustaOutlook(state: UiState, q: Quote) {
     val m = Market.ROBUSTA
     val t = q.technicals
-    val curve = state.robustaCurve
+    val curve = state.curve(Market.ROBUSTA)
     val signals = Analytics.signals(q)
     val bias = Analytics.bias(signals)
     val c = state.cccv?.getOrNull()
@@ -186,21 +186,8 @@ private fun RobustaOutlook(state: UiState, q: Quote) {
                 modifier = Modifier.padding(top = 10.dp, bottom = 8.dp),
             )
             TodayVsFutureChart(tvf, 190)
-            Spacer(Modifier.height(6.dp))
-            Row(Modifier.fillMaxWidth().padding(vertical = 4.dp)) {
-                Text("Venc.", Modifier.weight(0.9f), color = Muted)
-                Text("CCCV est.", Modifier.weight(1.6f), color = Muted, textAlign = androidx.compose.ui.text.style.TextAlign.End)
-                Text("vs. hoje", Modifier.weight(0.9f), color = Muted, textAlign = androidx.compose.ui.text.style.TextAlign.End)
-            }
-            curve.forEach { cp ->
-                val est = cccvEstimate(state, m, cp.price)
-                val vs = if (est != null && conilonHoje != null) Analytics.pctDiff(est, conilonHoje) else Analytics.pctDiff(cp.price, q.price)
-                Row(Modifier.fillMaxWidth().padding(vertical = 3.dp)) {
-                    Text(cp.expiry.label(), Modifier.weight(0.9f), color = Gold)
-                    Text(est?.let { brl(it) } ?: "${cp.price.fmt(0)} ${m.unit}", Modifier.weight(1.6f), textAlign = androidx.compose.ui.text.style.TextAlign.End)
-                    Text(vs.pct(1), Modifier.weight(0.9f), color = changeColor(vs), textAlign = androidx.compose.ui.text.style.TextAlign.End)
-                }
-            }
+            Spacer(Modifier.height(10.dp))
+            FutureTable(state, m)
             Text(
                 "Conilon CCCV estimado = futuro de Londres em R$/saca + diferencial de hoje entre o CCCV e Londres" +
                     (cccvBasis(state, m)?.let { " (${if (it >= 0) "+" else "−"}${brl(kotlin.math.abs(it))})" } ?: "") +
