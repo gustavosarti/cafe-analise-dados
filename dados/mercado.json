@@ -1,0 +1,283 @@
+{
+  "gerado_em": "2026-11-25T07:39:05-03:00",
+  "cccv": {
+    "mes": "novembro",
+    "ano": 2026,
+    "unidade": "R$/saca 60 kg",
+    "ultimo": {
+      "dia": 24,
+      "dura": 1597.0,
+      "rio": 1178.0,
+      "conilon": 859.0
+    },
+    "anterior": {
+      "dia": 23,
+      "dura": 1580.0,
+      "rio": 1166.0,
+      "conilon": 882.0
+    },
+    "dias": [
+      {
+        "dia": 3,
+        "dura": 1547.0,
+        "rio": 1143.0,
+        "conilon": 927.0
+      },
+      {
+        "dia": 4,
+        "dura": 1522.0,
+        "rio": 1135.0,
+        "conilon": 928.0
+      },
+      {
+        "dia": 5,
+        "dura": 1557.0,
+        "rio": 1160.0,
+        "conilon": 925.0
+      },
+      {
+        "dia": 6,
+        "dura": 1563.0,
+        "rio": 1161.0,
+        "conilon": 933.0
+      },
+      {
+        "dia": 9,
+        "dura": 1548.0,
+        "rio": 1154.0,
+        "conilon": 937.0
+      },
+      {
+        "dia": 10,
+        "dura": 1548.0,
+        "rio": 1145.0,
+        "conilon": 932.0
+      },
+      {
+        "dia": 11,
+        "dura": 1542.0,
+        "rio": 1142.0,
+        "conilon": 921.0
+      },
+      {
+        "dia": 12,
+        "dura": 1574.0,
+        "rio": 1165.0,
+        "conilon": 930.0
+      },
+      {
+        "dia": 13,
+        "dura": 1558.0,
+        "rio": 1165.0,
+        "conilon": 924.0
+      },
+      {
+        "dia": 16,
+        "dura": 1582.0,
+        "rio": 1180.0,
+        "conilon": 929.0
+      },
+      {
+        "dia": 17,
+        "dura": 1600.0,
+        "rio": 1150.0,
+        "conilon": 913.0
+      },
+      {
+        "dia": 18,
+        "dura": 1585.0,
+        "rio": 1154.0,
+        "conilon": 906.0
+      },
+      {
+        "dia": 19,
+        "dura": 1589.0,
+        "rio": 1156.0,
+        "conilon": 895.0
+      },
+      {
+        "dia": 23,
+        "dura": 1580.0,
+        "rio": 1166.0,
+        "conilon": 882.0
+      },
+      {
+        "dia": 24,
+        "dura": 1597.0,
+        "rio": 1178.0,
+        "conilon": 859.0
+      }
+    ],
+    "media_mes": {
+      "dura": 1566.13,
+      "rio": 1156.93,
+      "conilon": 916.07
+    }
+  },
+  "dolar": null,
+  "robusta": {
+    "unidade": "US$/t",
+    "bolsa": "ICE Londres",
+    "continuo": {
+      "close": 2754,
+      "change_abs": -59,
+      "change": -2.0974049057945257,
+      "SMA20": 3112.45,
+      "SMA50": 3277.42,
+      "SMA200": 3519.595,
+      "RSI": 15.85294492829398,
+      "Perf.W": -10.029402156158119,
+      "Perf.1M": -13.9375,
+      "Perf.3M": -23.07262569832402,
+      "Perf.6M": -22.640449438202246,
+      "Perf.Y": -38.81359697844923,
+      "price_52_week_high": 4605,
+      "price_52_week_low": 2752,
+      "Recommend.All": -0.5363636363636364
+    },
+    "curva": [
+      {
+        "vencimento": "Jan/27",
+        "ano": 2027,
+        "mes": 1,
+        "preco": 2754
+      },
+      {
+        "vencimento": "Mar/27",
+        "ano": 2027,
+        "mes": 3,
+        "preco": 2725
+      },
+      {
+        "vencimento": "Mai/27",
+        "ano": 2027,
+        "mes": 5,
+        "preco": 2714
+      },
+      {
+        "vencimento": "Jul/27",
+        "ano": 2027,
+        "mes": 7,
+        "preco": 2710
+      },
+      {
+        "vencimento": "Set/27",
+        "ano": 2027,
+        "mes": 9,
+        "preco": 2702
+      },
+      {
+        "vencimento": "Nov/27",
+        "ano": 2027,
+        "mes": 11,
+        "preco": 2690
+      },
+      {
+        "vencimento": "Jan/28",
+        "ano": 2028,
+        "mes": 1,
+        "preco": 2744
+      },
+      {
+        "vencimento": "Mar/28",
+        "ano": 2028,
+        "mes": 3,
+        "preco": 2740
+      }
+    ]
+  },
+  "arabica": null,
+  "outras_commodities": {
+    "acucar": {
+      "nome": "Açúcar (NY)",
+      "unidade": "US¢/lb"
+    },
+    "cacau": {
+      "nome": "Cacau (NY)",
+      "unidade": "US$/t"
+    },
+    "milho": {
+      "nome": "Milho (Chicago)",
+      "unidade": "US¢/bushel"
+    },
+    "soja": {
+      "nome": "Soja (Chicago)",
+      "unidade": "US¢/bushel"
+    },
+    "petroleo_brent": {
+      "nome": "Petróleo Brent",
+      "unidade": "US$/barril"
+    },
+    "indice_dolar": {
+      "nome": "Índice do dólar (DXY)",
+      "unidade": "pontos"
+    }
+  },
+  "hoje_x_futuro": {
+    "conilon": {
+      "hoje_bolsa": 2754,
+      "unidade_bolsa": "US$/t",
+      "hoje_cccv": 859.0,
+      "vencimentos": [
+        {
+          "vencimento": "Jan/27",
+          "preco_bolsa": 2754,
+          "vs_hoje_bolsa_pct": 0.0
+        },
+        {
+          "vencimento": "Mar/27",
+          "preco_bolsa": 2725,
+          "vs_hoje_bolsa_pct": -1.05
+        },
+        {
+          "vencimento": "Mai/27",
+          "preco_bolsa": 2714,
+          "vs_hoje_bolsa_pct": -1.45
+        },
+        {
+          "vencimento": "Jul/27",
+          "preco_bolsa": 2710,
+          "vs_hoje_bolsa_pct": -1.6
+        },
+        {
+          "vencimento": "Set/27",
+          "preco_bolsa": 2702,
+          "vs_hoje_bolsa_pct": -1.89
+        },
+        {
+          "vencimento": "Nov/27",
+          "preco_bolsa": 2690,
+          "vs_hoje_bolsa_pct": -2.32
+        },
+        {
+          "vencimento": "Jan/28",
+          "preco_bolsa": 2744,
+          "vs_hoje_bolsa_pct": -0.36
+        },
+        {
+          "vencimento": "Mar/28",
+          "preco_bolsa": 2740,
+          "vs_hoje_bolsa_pct": -0.51
+        }
+      ],
+      "resumo": {
+        "acima_de_hoje": 0,
+        "abaixo_de_hoje": 7,
+        "maior_pct": 0.0,
+        "menor_pct": -2.32,
+        "leitura": "queda"
+      }
+    },
+    "arabica_dura": null
+  },
+  "erros": [
+    "dólar: HTTPError: HTTP Error 429: Too Many Requests",
+    "arábica: HTTPError: HTTP Error 429: Too Many Requests",
+    "Açúcar (NY): HTTPError: HTTP Error 429: Too Many Requests",
+    "Cacau (NY): HTTPError: HTTP Error 429: Too Many Requests",
+    "Milho (Chicago): HTTPError: HTTP Error 429: Too Many Requests",
+    "Soja (Chicago): HTTPError: HTTP Error 429: Too Many Requests",
+    "Petróleo Brent: HTTPError: HTTP Error 429: Too Many Requests",
+    "Índice do dólar (DXY): HTTPError: HTTP Error 429: Too Many Requests"
+  ]
+}
