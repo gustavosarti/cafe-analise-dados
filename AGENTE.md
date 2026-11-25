@@ -61,6 +61,16 @@ Sobrescreva o arquivo com este formato exato (JSON válido, UTF-8):
   "gerado_em": "AAAA-MM-DDTHH:MM:SS-03:00",
   "titulo": "Frase curta com a principal notícia do dia (máx. 70 caracteres)",
   "resumo": "NO MÁXIMO 2 frases curtas (até ~300 caracteres): 1) preço do conilon hoje no CCCV e quanto mudou; 2) o que o mercado futuro indica para os próximos meses em relação a hoje (sobe ou cai, quanto em R$/saca) e o motivo principal.",
+  "expectativa": {
+    "mundo": {
+      "tendencia": "alta | queda | estavel",
+      "texto": "1 a 2 frases simples: o que o mercado mundial de robusta/conilon espera para os próximos meses e por quê (Londres, Vietnã, safra mundial, fundos, dólar)."
+    },
+    "espirito_santo": {
+      "tendencia": "alta | queda | estavel",
+      "texto": "1 a 2 frases simples: o que esperar para o conilon no Espírito Santo/CCCV nos próximos meses (colheita e clima no ES, oferta local, diferencial CCCV × Londres, ritmo de vendas)."
+    }
+  },
   "conilon": {
     "preco_hoje": 0.0,
     "variacao_dia": "ex.: caiu R$ 23,00 (-2,6%) em relação ao pregão anterior",
@@ -87,6 +97,10 @@ Sobrescreva o arquivo com este formato exato (JSON válido, UTF-8):
 ```
 
 Regras:
+- `expectativa` aparece no topo da tela inicial, logo abaixo do preço do conilon, para o pai ler primeiro.
+  Seja direto: a `tendencia` diz se o preço tende a ficar acima (alta) ou abaixo (queda) do preço de hoje nos
+  próximos meses, e o `texto` explica em linguagem de produtor. "mundo" e "espirito_santo" podem ter tendências
+  diferentes (ex.: Londres em queda, mas oferta curta no ES segurando o preço do CCCV).
 - `titulo` e `resumo` aparecem no cartão da tela inicial: sejam curtos e diretos. O detalhe vai em `conilon`,
   `arabica`, `fatores` e `noticias`, que aparecem no boletim completo.
 - `fatores`: de 3 a 6 itens, os mais importantes do dia.
