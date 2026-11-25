@@ -1,9 +1,44 @@
 {
-  "data": "",
-  "gerado_em": "",
-  "titulo": "Boletim ainda não gerado",
-  "resumo": "O primeiro boletim diário aparece aqui depois da primeira execução do agente.",
-  "fatores": [],
-  "noticias": [],
-  "aviso": "Análise informativa. Não é recomendação de compra ou venda."
+  "data": "2026-11-25",
+  "gerado_em": "2026-11-25T07:50:00-03:00",
+  "titulo": "Conilon cai pela 5ª vez seguida com colheita do Vietnã pesando",
+  "resumo": "O conilon fechou a R$ 859,00 por saca no CCCV no dia 24, R$ 23,00 a menos que no pregão anterior (-2,6%) e R$ 68,00 abaixo do começo do mês. A queda vem de Londres, onde o robusta está no menor preço do último ano porque a colheita do Vietnã está chegando ao pico e deve aumentar a oferta. O arábica dura subiu um pouco no CCCV (R$ 1.597,00), mas Nova York caiu depois que os estoques da bolsa voltaram a crescer.",
+  "conilon": {
+    "preco_hoje": 859.0,
+    "variacao_dia": "caiu R$ 23,00 (-2,6%) em relação ao pregão anterior (R$ 882,00 no dia 23)",
+    "tendencia_futuro": "queda",
+    "texto_futuro": "Os próximos vencimentos de Londres pagam um pouco menos que hoje. Convertido para o CCCV, março/27 daria cerca de R$ 848,37 (R$ 10,63 a menos, -1,2%), maio/27 cerca de R$ 844,48 (-1,7%), julho/27 cerca de R$ 843,06 (-1,9%) e novembro/27 cerca de R$ 835,98 (R$ 23,02 a menos, -2,7%). Só janeiro e março de 2028 ficam quase iguais a hoje (-0,5% e -0,6%). Ou seja: a bolsa não está prometendo melhora ao longo de 2027. O motivo é a oferta grande: o Vietnã colhe agora uma safra estimada em 30,5 milhões de sacas e o Brasil caminha para uma safra recorde.",
+    "curto_prazo": "Nas próximas semanas o preço ainda pode ficar pressionado, porque o pico da colheita no Vietnã vai do fim de novembro ao começo de dezembro, e os fundos (investidores que apostam na bolsa) aumentaram as apostas na queda. Por outro lado, o robusta caiu muito rápido: cerca de 10% só na última semana, e já está no menor nível de 52 semanas (US$ 2.755 por tonelada). Quedas tão fortes às vezes são seguidas de um respiro, principalmente se os produtores vietnamitas segurarem a venda com o preço baixo. O conilon no CCCV vem caindo todo dia desde o dia 17 (de R$ 913,00 para R$ 859,00).",
+    "medio_prazo": "De 3 a 6 meses, o que mais pesa é a safra brasileira 2026/27 grande e as exportações fortes, o que tende a manter o mercado com bastante café. O que pode puxar para cima é a oferta de conilon menor no Espírito Santo: o USDA cortou a estimativa de conilon do Brasil para 23,3 milhões de sacas por causa do clima ruim no estado, e há atenção com um possível El Niño forte, que costuma trazer calor e seca e pode afetar a safra 2027/28."
+  },
+  "arabica": {
+    "preco_hoje": 1597.0,
+    "tendencia_futuro": "queda",
+    "texto": "No CCCV o arábica dura subiu R$ 17,00, para R$ 1.597,00, e o rio subiu R$ 12,00, para R$ 1.178,00 (dia 24). Já Nova York caiu 1,2% para 259,55 centavos de dólar por libra-peso, o menor nível em quase cinco meses, e perdeu 6,6% na semana. O motivo foi o aumento dos estoques guardados nos armazéns da bolsa, que pularam de cerca de 186 mil para 268 mil sacas em uma semana. Os vencimentos futuros pagam menos que hoje: maio/27 daria cerca de R$ 1.558,74 (-2,4%) e março/28 cerca de R$ 1.438,89 (-9,9%), porque o mercado espera mais café do Brasil."
+  },
+  "fatores": [
+    {"fator": "Colheita no Vietnã", "efeito": "baixa", "explicacao": "A colheita de robusta está chegando ao pico e as exportações vietnamitas de outubro cresceram 60%, aumentando a oferta concorrente do conilon."},
+    {"fator": "Safra recorde no Brasil", "efeito": "baixa", "explicacao": "O USDA estima a safra brasileira 2026/27 em 72,5 milhões de sacas e o Brasil exportou recorde de 5,33 milhões de sacas em outubro."},
+    {"fator": "Fundos apostando na queda", "efeito": "baixa", "explicacao": "Os investidores ampliaram as apostas na queda tanto no arábica quanto no robusta, o que reforça a pressão nas bolsas."},
+    {"fator": "Estoques da bolsa de Nova York", "efeito": "baixa", "explicacao": "Os estoques certificados voltaram a subir forte depois de bater o menor nível em 27 anos, tirando força do arábica."},
+    {"fator": "Conilon menor no ES", "efeito": "alta", "explicacao": "O USDA cortou a previsão de conilon do Brasil para 23,3 milhões de sacas por causa do clima adverso no Espírito Santo."},
+    {"fator": "Clima no ES", "efeito": "neutro", "explicacao": "Chuva de 60 a 80 mm prevista para o norte do estado até domingo ajuda as lavouras, mas no sul pode passar de 100 mm e exige atenção."}
+  ],
+  "commodities": "O dólar ficou praticamente parado, a R$ 5,90, então a queda do conilon veio da bolsa e não do câmbio. O petróleo e os grãos também estão em queda, num clima geral de baixa nas commodities.",
+  "o_que_observar": [
+    "Se o robusta em Londres para de cair perto de US$ 2.750 por tonelada",
+    "Ritmo de venda dos produtores do Vietnã no pico da colheita",
+    "Chuva no Espírito Santo nesta semana (frente fria entre quarta e sexta)",
+    "Estoques da bolsa de Nova York, que voltaram a subir",
+    "Notícias sobre El Niño e a florada para a safra 2027/28"
+  ],
+  "noticias": [
+    {"titulo": "Café robusta atinge menor cotação em 2 anos e meio, enquanto arábica sobe", "resumo": "Robusta caiu 2,3% em Londres com o início da colheita no Vietnã, que deve ganhar ritmo no fim de novembro.", "fonte": "Investing.com / Reuters", "url": "https://br.investing.com/news/economy-news/cafe-robusta-atinge-menor-cotacao-em-2-anos-e-meio-enquanto-arabica-sobe-2130436", "data": "2026-11-17"},
+    {"titulo": "Café atinge menores níveis em quase cinco meses em NY com aumento dos estoques certificados", "resumo": "Estoques da ICE subiram para 268.614 sacas e as exportações do Brasil bateram recorde em outubro.", "fonte": "SAFRAS & Mercado", "url": "https://safras.com.br/cafe-atinge-menores-niveis-em-quase-cinco-meses-em-ny-com-aumento-dos-estoques-certificados-e-fortes-exportacoes-brasileiras/", "data": "2026-11-24"},
+    {"titulo": "Café arábica cai após maior alta diária dos estoques na bolsa em 28 anos", "resumo": "Estoques de arábica subiram 19% em um dia e o mercado espera sobra de café na safra 2026/27.", "fonte": "InvestNews / Bloomberg", "url": "https://investnews.com.br/economia/cafe-arabica-alta-estoques-28-anos/", "data": "2026-11-24"},
+    {"titulo": "Adido do USDA eleva previsão da safra recorde de café do Brasil para 72,5 milhões de sacas", "resumo": "Arábica foi revisado para cima e conilon para baixo, a 23,3 milhões de sacas, por causa do clima no ES.", "fonte": "Forbes Brasil / Reuters", "url": "https://forbes.com.br/forbes-agro/2026/11/adido-do-usda-eleva-previsao-da-safra-recorde-de-cafe-do-brasil-para-725-milhoes-de-sacas/", "data": "2026-11-17"},
+    {"titulo": "Mercado de café desacelera com aumento da pressão da oferta", "resumo": "Hedgepoint aponta safra do Vietnã de 30,5 milhões de sacas e fundos ampliando apostas na queda.", "fonte": "Revista Cultivar", "url": "https://revistacultivar.com.br/noticias/mercado-de-cafe-desacelera-com-aumento-da-pressao-da-oferta", "data": "2026-11-19"},
+    {"titulo": "Chuva pode superar 100 mm no ES até domingo; veja regiões em atenção", "resumo": "Defesa Civil prevê 60 a 80 mm no norte do ES e mais de 100 mm no sul e serrana até 29/11.", "fonte": "Capixaba da Gema", "url": "https://capixabadagema.com.br/chuva-espirito-santo-23-29-novembro-2026-alerta/", "data": "2026-11-23"}
+  ],
+  "aviso": "Análise informativa baseada nos preços do dia e em notícias. Não é recomendação de compra ou venda."
 }
