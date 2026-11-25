@@ -9,7 +9,7 @@ simples para quem não acompanha bolsa.
 
 | Aba | O que mostra |
 |---|---|
-| **Hoje** | Resumo do conilon no CCCV (preço, variação, valor das sacas e o que o mercado futuro espera), boletim do dia, cotações do CCCV (arábica dura, rio e conilon 7/8) e as bolsas de referência. Atualiza sozinho a cada minuto. |
+| **Hoje** | Resumo do conilon no CCCV (preço, variação, valor das sacas e "o que o mercado espera" — expectativa do mundo e do Espírito Santo escrita pelo agente de IA), boletim do dia, cotações do CCCV (arábica dura, rio e conilon 7/8) e as bolsas de referência. Atualiza sozinho a cada minuto. |
 | **Gráfico** | Histórico do arábica (NY) com médias móveis. |
 | **Futuros** | "Hoje × futuro": preço de hoje no CCCV e a estimativa de cada vencimento (Londres para conilon, NY para arábica), com pontos acima/abaixo de hoje. |
 | **Tendência** | Para onde o mercado aponta, desempenho da robusta, indicadores técnicos e o conilon no CCCV ao longo do mês. |

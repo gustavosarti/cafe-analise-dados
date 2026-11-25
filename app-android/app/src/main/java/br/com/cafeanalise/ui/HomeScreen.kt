@@ -249,10 +249,27 @@ private fun ConilonSummary(state: UiState, settings: Settings) {
             )
         }
 
-        // Tendência: preço de hoje no CCCV comparado com os vencimentos de Londres (convertidos para o CCCV).
+        // "O que o mercado espera": escrito pelo agente (mundo + Espírito Santo) quando houver boletim;
+        // senão, texto automático a partir da curva de Londres.
         val tvf = todayVsFuture(state, Market.ROBUSTA)
-        if (tvf != null && tvf.points.isNotEmpty()) {
+        val bol = state.boletim?.getOrNull()?.takeIf { it.disponivel && it.temExpectativa }
+        if (bol != null || (tvf != null && tvf.points.isNotEmpty())) {
             RowDivider()
+            Text("O que o mercado espera", fontSize = 13.sp, color = Muted, modifier = Modifier.padding(top = 8.dp))
+        }
+        if (bol != null) {
+            ExpectativaBloco("MUNDO", bol.mundoTendencia, bol.mundoTexto)
+            ExpectativaBloco("ESPÍRITO SANTO", bol.esTendencia, bol.esTexto)
+            if (tvf != null && tvf.points.isNotEmpty() && tvf.inCccv) {
+                val min = tvf.points.minOf { it.second }
+                val max = tvf.points.maxOf { it.second }
+                Text(
+                    "Mercado futuro de Londres até ${tvf.points.last().first.expiry.label()}: conilon entre ${brl(min)} e ${brl(max)} a saca. " +
+                        "Análise de IA (${boletimDataLabel(bol).lowercase()}), não é garantia.",
+                    fontSize = 12.sp, color = Muted, modifier = Modifier.padding(top = 8.dp),
+                )
+            }
+        } else if (tvf != null && tvf.points.isNotEmpty()) {
             val (_, b) = readingVsToday(tvf)
             val (icon, word, color) = when {
                 b < 0 -> Triple("▼", "MENOR que hoje", Down)
@@ -261,7 +278,6 @@ private fun ConilonSummary(state: UiState, settings: Settings) {
             }
             val min = tvf.points.minOf { it.second }
             val max = tvf.points.maxOf { it.second }
-            Text("O que o mercado espera", fontSize = 13.sp, color = Muted, modifier = Modifier.padding(top = 8.dp))
             Text("$icon Preço futuro $word", fontSize = 17.sp, fontWeight = FontWeight.Bold, color = color)
             Text(
                 "Nos próximos meses (até ${tvf.points.last().first.expiry.label()}), o mercado de Londres indica " +
@@ -270,5 +286,24 @@ private fun ConilonSummary(state: UiState, settings: Settings) {
                 fontSize = 13.sp, color = Muted, modifier = Modifier.padding(top = 2.dp),
             )
         }
+    }
+}
+
+/** Um bloco da expectativa escrita pelo agente: rótulo, seta de tendência e texto. */
+@Composable
+fun ExpectativaBloco(rotulo: String, tendencia: String, texto: String) {
+    if (texto.isBlank()) return
+    val (icon, word, color) = when (tendencia.trim().lowercase()) {
+        "alta" -> Triple("▲", "tendência de alta", Up)
+        "queda" -> Triple("▼", "tendência de queda", Down)
+        "estavel", "estável" -> Triple("▶", "tendência estável", Muted)
+        else -> Triple("", "", Muted)
+    }
+    Column(Modifier.padding(top = 8.dp)) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(rotulo, fontSize = 12.sp, color = Gold, fontWeight = FontWeight.Bold, letterSpacing = 1.sp)
+            if (word.isNotBlank()) Text("  $icon $word", fontSize = 14.sp, color = color, fontWeight = FontWeight.Bold)
+        }
+        Text(texto, fontSize = 14.sp, color = TextMain, modifier = Modifier.padding(top = 2.dp))
     }
 }

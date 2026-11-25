@@ -76,6 +76,15 @@ fun BoletimScreen(b: Boletim) {
             Text(b.resumo, fontSize = 16.sp, color = TextMain, modifier = Modifier.padding(top = 6.dp))
         }
 
+        // ---------------- expectativas
+        if (b.temExpectativa) {
+            SectionCard {
+                SectionTitle("O que o mercado espera")
+                ExpectativaBloco("MUNDO", b.mundoTendencia, b.mundoTexto)
+                ExpectativaBloco("ESPÍRITO SANTO", b.esTendencia, b.esTexto)
+            }
+        }
+
         // ---------------- conilon
         if (b.conilonFuturo.isNotBlank() || b.curtoPrazo.isNotBlank() || b.medioPrazo.isNotBlank()) {
             SectionCard {

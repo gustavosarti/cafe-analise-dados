@@ -144,8 +144,14 @@ data class Boletim(
     val oQueObservar: List<String>,
     val noticias: List<BoletimNoticia>,
     val aviso: String,
+    /** Expectativa escrita pelo agente: mercado mundial e Espírito Santo. */
+    val mundoTendencia: String = "",
+    val mundoTexto: String = "",
+    val esTendencia: String = "",
+    val esTexto: String = "",
 ) {
     val disponivel: Boolean get() = data.isNotBlank() && resumo.isNotBlank()
+    val temExpectativa: Boolean get() = mundoTexto.isNotBlank() || esTexto.isNotBlank()
 }
 
 /** Um dia de preço físico no CCCV (R$/saca). */

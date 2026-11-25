@@ -237,6 +237,9 @@ object MarketApi {
         val fat = o.optJSONArray("fatores")
         val obs = o.optJSONArray("o_que_observar")
         val nots = o.optJSONArray("noticias")
+        val exp = o.optJSONObject("expectativa")
+        val mundo = exp?.optJSONObject("mundo")
+        val es = exp?.optJSONObject("espirito_santo")
         return Boletim(
             data = o.s("data"),
             geradoEm = o.s("gerado_em"),
@@ -258,6 +261,10 @@ object MarketApi {
                 nots!!.optJSONObject(i)?.let { BoletimNoticia(it.s("titulo"), it.s("resumo"), it.s("fonte"), it.s("url"), it.s("data")) }
             },
             aviso = o.s("aviso"),
+            mundoTendencia = mundo.s("tendencia"),
+            mundoTexto = mundo.s("texto"),
+            esTendencia = es.s("tendencia"),
+            esTexto = es.s("texto"),
         )
     }
 
