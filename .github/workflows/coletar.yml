@@ -2,9 +2,10 @@ name: Coletar dados de mercado
 
 on:
   schedule:
-    # Horários em UTC (Brasília = UTC-3): 06:40, 12:40 e 17:40 de segunda a sexta,
-    # e 09:40 no sábado (para o fechamento de sexta).
-    - cron: "40 9,15,20 * * 1-5"
+    # Horários em UTC (Brasília = UTC-3): 06:10, 12:40 e 17:40 de segunda a sexta,
+    # e 09:40 no sábado (para o fechamento de sexta). O agente do boletim roda por volta das 06:40.
+    - cron: "10 9 * * 1-5"
+    - cron: "40 15,20 * * 1-5"
     - cron: "40 12 * * 6"
   workflow_dispatch:
 
