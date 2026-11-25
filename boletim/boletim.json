@@ -1,14 +1,24 @@
 {
   "data": "2026-11-25",
-  "gerado_em": "2026-11-25T08:11:01-03:00",
-  "titulo": "Conilon cai pela 5ª vez seguida com colheita do Vietnã pesando",
+  "gerado_em": "2026-11-25T08:25:00-03:00",
+  "titulo": "Conilon cai pela 5ª vez seguida com colheita do Vietnã no pico",
   "resumo": "Conilon a R$ 859,00 no CCCV, R$ 23,00 a menos que no pregão anterior (-2,6%). Londres paga menos que hoje para 2027, de R$ 10,63 a R$ 26,21 a menos por saca, porque a colheita do Vietnã aumenta a oferta.",
+  "expectativa": {
+    "mundo": {
+      "tendencia": "queda",
+      "texto": "Londres está pagando menos que hoje para todos os meses de 2027. O Vietnã está no pico da colheita, com safra estimada em 30,5 milhões de sacas, o Brasil vem de safra recorde e os fundos apostam na queda; o robusta já perdeu cerca de 10% na semana e está quase na mínima do ano."
+    },
+    "espirito_santo": {
+      "tendencia": "queda",
+      "texto": "O conilon no CCCV acompanha Londres e caiu de R$ 929,00 (dia 16) para R$ 859,00 (dia 24). O que pode segurar o preço aqui é a oferta menor de conilon no ES (o USDA cortou a estimativa por causa do clima) e o dólar alto, mas por enquanto a pressão da bolsa é mais forte."
+    }
+  },
   "conilon": {
     "preco_hoje": 859.0,
     "variacao_dia": "caiu R$ 23,00 (-2,6%) em relação ao pregão anterior (R$ 882,00 no dia 23)",
     "tendencia_futuro": "queda",
     "texto_futuro": "Todos os próximos vencimentos de Londres pagam menos que hoje. Convertido para o CCCV, março/27 daria cerca de R$ 848,37 (R$ 10,63 a menos, -1,2%), maio/27 cerca de R$ 844,83 (-1,7%), julho/27 cerca de R$ 842,35 (-1,9%), setembro/27 cerca de R$ 839,52 (-2,3%) e novembro/27 cerca de R$ 832,79 (R$ 26,21 a menos, -3,1%). Janeiro e março de 2028 ficam um pouco mais perto de hoje (-0,8% e -1,0%). Ou seja: a bolsa não está mostrando melhora ao longo de 2027. O motivo é a oferta grande: o Vietnã colhe agora uma safra estimada em 30,5 milhões de sacas e o Brasil caminha para uma safra recorde.",
-    "curto_prazo": "Nas próximas semanas o preço ainda pode ficar pressionado, porque o pico da colheita no Vietnã vai do fim de novembro ao começo de dezembro, e os fundos (investidores que apostam na bolsa) aumentaram as apostas na queda. Por outro lado, o robusta caiu muito rápido: cerca de 10% na última semana, e está perto do menor nível de 52 semanas (US$ 2.764 por tonelada hoje, contra mínima de US$ 2.752). Quedas tão fortes às vezes são seguidas de um respiro, principalmente se os produtores vietnamitas segurarem a venda com o preço baixo. O conilon no CCCV vem caindo todo dia desde o dia 17 (de R$ 913,00 para R$ 859,00).",
+    "curto_prazo": "Nas próximas semanas o preço ainda pode ficar pressionado: o pico da colheita no Vietnã vai do fim de novembro ao começo de dezembro, e lá o preço pago ao produtor caiu de novo, para 70.500 a 71.500 dongs por quilo. Por outro lado, o robusta caiu muito rápido (cerca de 10% na semana) e está quase na mínima de 52 semanas (US$ 2.764 por tonelada hoje, contra mínima de US$ 2.752). Quedas tão fortes às vezes são seguidas de um respiro, principalmente se os vietnamitas segurarem a venda com o preço baixo. O conilon no CCCV caiu em cinco pregões seguidos, de R$ 929,00 (dia 16) para R$ 859,00 (dia 24), e está abaixo da média do mês (R$ 916,07).",
     "medio_prazo": "De 3 a 6 meses, o que mais pesa é a safra brasileira 2026/27 grande e as exportações fortes, o que tende a manter o mercado com bastante café. O que pode puxar para cima é a oferta de conilon menor no Espírito Santo: o USDA cortou a estimativa de conilon do Brasil para 23,3 milhões de sacas por causa do clima ruim no estado, e há atenção com um possível El Niño forte, que costuma trazer calor e seca e pode afetar a safra 2027/28."
   },
   "arabica": {
@@ -93,11 +103,11 @@
       "data": "2026-11-17"
     },
     {
-      "titulo": "Norte e Noroeste do ES terão semana de calor, chuvas e risco de temporais, alerta Inmet",
-      "resumo": "Calor de até 36 °C na quarta e nova instabilidade na quinta e sexta, com chuva mais provável no litoral norte e em São Mateus.",
-      "fonte": "Rede Notícia ES",
-      "url": "https://redenoticia.es/norte-e-noroeste-do-es-terao-semana-de-calor-chuvas-e-risco-de-temporais-alerta-inmet/",
-      "data": "2026-11-23"
+      "titulo": "Preços do café hoje, 25/11/2026: robusta e arábica",
+      "resumo": "No Vietnã o café caiu para 70.500 a 71.500 dongs por quilo, com a colheita entrando no pico entre o fim de novembro e o começo de dezembro.",
+      "fonte": "Helena Coffee",
+      "url": "https://www.helenacoffee.vn/coffee-prices-today-november-25-2026/",
+      "data": "2026-11-25"
     }
   ],
   "aviso": "Análise informativa baseada nos preços do dia e em notícias. Não é recomendação de compra ou venda."
