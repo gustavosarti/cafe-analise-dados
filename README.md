@@ -1,6 +1,10 @@
-# Café Análise — dados
+# Café Análise
 
-Dados de mercado de café usados pelo app **Café Análise** (Android).
+App Android e dados de mercado de café com **foco no Espírito Santo**: preços físicos do **CCCV (Vitória)**,
+principalmente do **conilon**, comparados com as bolsas de Londres e Nova York.
+
+- `app-android/` — código do app (veja o README da pasta)
+- `dados/` e `boletim/` — dados de mercado e boletim diário lidos pelo app
 
 | Arquivo | O que é | Quem gera |
 |---|---|---|
