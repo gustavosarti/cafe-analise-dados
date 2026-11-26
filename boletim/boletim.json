@@ -1,45 +1,54 @@
 {
   "data": "2026-11-26",
-  "gerado_em": "2026-11-26T06:50:00-03:00",
-  "titulo": "Conilon cai para R$ 824 com colheita do Vietnã pesando em Londres",
-  "resumo": "O conilon fechou a R$ 824,00 a saca no CCCV, queda de R$ 35,00 (-4,1%) num só pregão e R$ 113,00 abaixo da máxima do mês (R$ 937,00 no dia 9). A colheita do Vietnã, maior produtor de robusta do mundo, está a todo vapor e levou Londres ao menor preço em três anos. A bolsa paga um pouco menos que hoje para os próximos meses, sinal de que o mercado ainda espera muita oferta.",
+  "gerado_em": "2026-11-26T17:50:00-03:00",
+  "titulo": "Fechamento: conilon para de cair e sobe a R$ 828 com repique em Londres",
+  "resumo": "O conilon fechou hoje a R$ 828,00 no CCCV, alta de R$ 4,00 (+0,5%), após seis quedas seguidas. Londres paga um pouco menos que hoje para os próximos meses (março/2027 cerca de R$ 819, -1%), porque a colheita do Vietnã ainda deve trazer muita oferta.",
+  "expectativa": {
+    "mundo": {
+      "tendencia": "queda",
+      "texto": "Londres subiu 2,1% hoje, um respiro depois de bater o menor preço em três anos, mas todos os vencimentos seguem abaixo de hoje. O mercado espera muita oferta com a colheita do Vietnã no pico, e os fundos continuam apostando na queda."
+    },
+    "espirito_santo": {
+      "tendencia": "estavel",
+      "texto": "O CCCV parou de cair e o conilon está R$ 77 abaixo da média do mês (R$ 905,47), o que já reflete boa parte da queda de Londres. A safra menor do ES em 2026 e o produtor vendendo pouco nesses preços podem segurar o CCCV, mas sem força para subir enquanto Londres estiver fraca."
+    }
+  },
   "conilon": {
-    "preco_hoje": 824.0,
-    "variacao_dia": "caiu R$ 35,00 (-4,1%) em relação ao pregão anterior (R$ 859,00)",
+    "preco_hoje": 828.0,
+    "variacao_dia": "subiu R$ 4,00 (+0,5%) em relação ao pregão anterior (R$ 824,00)",
     "tendencia_futuro": "queda",
-    "texto_futuro": "Todos os vencimentos de Londres estão abaixo do preço de hoje. Convertido para o CCCV, março/2027 daria cerca de R$ 813,87 (R$ 10 a menos, -1,2%), julho/2027 cerca de R$ 804,44 (-2,4%) e março/2028 cerca de R$ 790,47 (-4,1%). Ou seja: o mercado não está pagando prêmio para esperar. A diferença é pequena no começo e vai aumentando, porque a bolsa conta com a safra grande do Vietnã chegando agora e com boa oferta também no ano que vem.",
-    "curto_prazo": "Próximas semanas: a pressão tende a continuar enquanto o Vietnã colhe e vende. Mas a queda foi muito rápida (Londres caiu cerca de 7% na semana e 12% no mês) e os fundos já estão apostando na baixa; isso costuma abrir espaço para repiques quando eles recompram. Outro freio para a queda: no Vietnã, alguns produtores estão segurando o café porque o preço caiu demais. No ES, as chuvas fortes desta semana ajudam a lavoura, mas atrapalham estradas e o movimento de café.",
-    "medio_prazo": "3 a 6 meses (até maio): o preço pode seguir mais baixo que no ano passado se a safra do Vietnã se confirmar grande (estimativas de 30 a 35 milhões de sacas) e as exportações seguirem fortes. Do lado da alta, a safra de conilon do ES de 2026 foi menor (Conab: 12,1 milhões de sacas, -14%), o El Niño previsto para o início de 2027 pode trazer calor e irregularidade de chuva, e qualquer alta do dólar melhora o preço em reais. A florada e o pegamento da safra 2027 no norte do ES vão pesar muito nessa conta."
+    "texto_futuro": "Hoje Londres fechou em US$ 2.857 por tonelada (+2,1%), mas os vencimentos seguintes continuam abaixo. Convertido para o CCCV: março/2027 daria cerca de R$ 819,47 (R$ 8,53 a menos, -1,0%), julho/2027 cerca de R$ 810,94 (R$ 17,06 a menos, -2,1%) e março/2028 cerca de R$ 801,39 (R$ 26,61 a menos, -3,2%). A diferença é pequena: o mercado não paga para esperar, mas também não prevê um tombo grande daqui para frente.",
+    "curto_prazo": "Próximas semanas: a alta de hoje pode ser o começo de um repique, porque a queda foi muito rápida (Londres caiu cerca de 11% no mês) e os fundos, que estão vendidos, podem recomprar. Mas enquanto o Vietnã colhe e exporta forte, cada subida tende a encontrar venda. O CCCV deve acompanhar Londres e o dólar dia a dia.",
+    "medio_prazo": "3 a 6 meses (até maio): o preço tende a ficar perto ou um pouco abaixo do de hoje se a safra do Vietnã se confirmar grande. Do lado da alta: a safra de conilon do ES de 2026 foi menor, o El Niño previsto para 2027 pode trazer calor e chuva irregular, e a florada e o pegamento da safra 2027 no norte do ES ainda vão ser conferidos. Uma alta do dólar também melhora o preço em reais."
   },
   "arabica": {
-    "preco_hoje": 1583.0,
+    "preco_hoje": 1594.0,
     "tendencia_futuro": "queda",
-    "texto": "No CCCV, o arábica dura ficou em R$ 1.583,00 (-R$ 14,00, -0,9%) e o rio em R$ 1.132,00 (-R$ 46,00, -3,9%). Em Nova York, o arábica tinha caído à mínima em cerca de cinco meses, mas subiu na quarta com compras de fundos que estavam vendidos e previsão de chuva em Minas; o contrato de março está em 270 centavos de dólar por libra-peso. Os vencimentos mais longos pagam bem menos: maio/2027 equivale a cerca de R$ 1.529,87 (-3,4%) e março/2028 a R$ 1.382,03 (-12,7%), porque a bolsa espera safra grande do Brasil em 2027. Os estoques certificados da bolsa em NY subiram forte, para cerca de 283 mil sacas."
+    "texto": "No CCCV, o arábica dura fechou em R$ 1.594,00 (+R$ 11,00, +0,7%) e o rio em R$ 1.141,00 (+R$ 9,00, +0,8%). A bolsa de Nova York não abriu hoje por causa do feriado de Ação de Graças nos EUA; vale o fechamento de ontem, 270 centavos de dólar por libra-peso (+2,8%). Os vencimentos longos pagam bem menos: maio/2027 equivale a cerca de R$ 1.542,10 (-3,3%) e março/2028 a R$ 1.397,69 (-12,3%), porque a bolsa espera safra grande do Brasil em 2027."
   },
   "fatores": [
-    {"fator": "Colheita do Vietnã", "efeito": "baixa", "explicacao": "A colheita está no pico e as exportações de outubro subiram mais de 50% sobre o ano passado, aumentando a oferta de robusta."},
-    {"fator": "Fundos vendidos", "efeito": "baixa", "explicacao": "Os fundos apostam na queda do robusta; isso pesa agora, mas pode virar repique rápido quando eles recomprarem."},
-    {"fator": "Produtor vietnamita retraído", "efeito": "alta", "explicacao": "Com o preço no interior do Vietnã caindo de 83 mil para cerca de 71 mil dongs por quilo, parte dos produtores segura o café, o que pode frear a queda."},
-    {"fator": "Chuva no ES", "efeito": "neutro", "explicacao": "Chuva farta favorece as lavouras de conilon, mas os volumes altos (até 200 mm no sul) trazem estragos e atrapalham a logística."},
-    {"fator": "Estoques da bolsa de NY", "efeito": "baixa", "explicacao": "Os estoques certificados de arábica tiveram a maior alta diária em décadas, sinal de café brasileiro chegando ao mercado."},
-    {"fator": "El Niño em 2027", "efeito": "alta", "explicacao": "Há previsão de El Niño forte no início de 2027, que pode trazer calor e chuva irregular e preocupar a safra seguinte."}
+    {"fator": "Colheita do Vietnã", "efeito": "baixa", "explicacao": "A colheita está no pico e as exportações estão fortes, o que mantém a oferta de robusta alta e os vencimentos abaixo de hoje."},
+    {"fator": "Repique em Londres", "efeito": "alta", "explicacao": "Depois de bater o menor preço em três anos, Londres virou no fim do dia e fechou em alta de 2,1%, ajudando o CCCV a parar de cair."},
+    {"fator": "Fundos vendidos", "efeito": "neutro", "explicacao": "Os fundos apostam na queda; isso pesa, mas quando eles recompram as altas podem ser rápidas, como hoje."},
+    {"fator": "Dólar mais barato", "efeito": "baixa", "explicacao": "O dólar caiu para R$ 5,69 (-2,3%), o que reduz o valor em reais do café vendido lá fora e limitou a alta no CCCV."},
+    {"fator": "Produtor retraído", "efeito": "alta", "explicacao": "Com o preço baixo, produtores no Vietnã e no Brasil tendem a vender menos, o que pode frear novas quedas."},
+    {"fator": "El Niño em 2027", "efeito": "alta", "explicacao": "A previsão de El Niño no início de 2027 pode trazer calor e chuva irregular e preocupar a safra seguinte de conilon."}
   ],
-  "commodities": "O dólar ficou estável em R$ 5,82. O petróleo Brent recuou (-0,9%) e o açúcar subiu (+3,9%), mas nenhum deles mudou o rumo do café hoje; o que manda no conilon agora é a oferta do Vietnã.",
+  "commodities": "O dólar caiu 2,3%, para R$ 5,69, o que segura o preço do café em reais mesmo com Londres subindo. O açúcar subiu 3,9%, mas não muda o rumo do café; o que manda no conilon agora é a oferta do Vietnã.",
   "o_que_observar": [
+    "Se Londres se firma acima da mínima de três anos (cerca de US$ 2.709 por tonelada)",
     "Ritmo de vendas e exportações do Vietnã em dezembro",
-    "Se Londres consegue se firmar acima da mínima de três anos (cerca de US$ 2.700 por tonelada)",
-    "Florada e pegamento do conilon no norte do ES depois das chuvas",
-    "Estoques certificados de arábica na bolsa de Nova York",
-    "Dólar: alta do dólar melhora o preço em reais",
-    "Próxima estimativa de safra da Conab"
+    "Volta de Nova York na sexta, em pregão curto após o feriado",
+    "Dólar: queda do dólar reduz o preço em reais",
+    "Florada e pegamento do conilon no norte do ES depois das chuvas"
   ],
   "noticias": [
-    {"titulo": "Robusta coffee sets three-year low", "resumo": "Robusta caiu ao menor nível em três anos (US$ 2.709/t) com a colheita do Vietnã ganhando ritmo; arábica se recuperou de mínima de cinco meses.", "fonte": "Business Recorder (Reuters)", "url": "https://www.brecorder.com/news/40450759/robusta-coffee-sets-three-year-low", "data": "2026-11-26"},
+    {"titulo": "Robusta coffee futures rise over 2.3%", "resumo": "No fechamento europeu desta quinta, o robusta virou no fim do dia e subiu cerca de 2,3% em Londres.", "fonte": "Longbridge (Wallstreetcn)", "url": "https://longbridge.com/en/news/306937678", "data": "2026-11-26"},
+    {"titulo": "Robusta coffee sets three-year low", "resumo": "Na quarta, o robusta caiu ao menor nível em três anos (US$ 2.709/t) com a colheita do Vietnã ganhando ritmo; o arábica subiu de uma mínima de cinco meses.", "fonte": "Business Recorder (Reuters)", "url": "https://www.brecorder.com/news/40450759/robusta-coffee-sets-three-year-low", "data": "2026-11-26"},
+    {"titulo": "Cotação do café nesta quinta-feira, 26 de novembro, apresenta estabilidade em Três Pontas", "resumo": "No sul de Minas, o arábica tipo 6 ficou estável em cerca de R$ 1.582 a saca.", "fonte": "Três Pontas Studio Live", "url": "https://trespontasstudiolive.com.br/cotacao-do-cafe-nesta-quinta-feira-26-de-novembro-apresenta-estabilidade-em-tres-pontas", "data": "2026-11-26"},
     {"titulo": "Agro ES: conilon cai para R$ 825 e tomate recua na Ceasa", "resumo": "Na Cooabriel, o conilon tipo 7 foi cotado a R$ 825 a saca, R$ 5 abaixo do dia anterior.", "fonte": "Vitória News", "url": "https://vitorianews.com.br/agro-es-conilon-cai-para-r-825-e-tomate-recua-na-ceasa", "data": "2026-11-25"},
-    {"titulo": "Vietnam coffee FOB prices hold firm as global robusta slides", "resumo": "Preço do robusta no interior do Vietnã caiu de mais de 83 mil para cerca de 72 mil dongs/kg; exportações de outubro subiram mais de 50% no ano.", "fonte": "CMB News", "url": "https://commodity-board.com/vietnam-coffee-fob-prices-firm-despite-global-robusta-sell-off", "data": "2026-11-22"},
-    {"titulo": "Arabica Coffee Rises on Short Covering, Brazil Rain", "resumo": "Arábica de março subiu 2,8% com recompra de fundos e chuva prevista em Minas; estoques da ICE em 283 mil sacas e fundos vendidos em robusta.", "fonte": "Wisevoter (Barchart)", "url": "https://wisevoter.com/world/2026/11/25/arabica-coffee-rises-brazil-rain-short-covering", "data": "2026-11-25"},
-    {"titulo": "Coffee Futures Slip After Big Spike in Exchange Stockpiles", "resumo": "Estoques de arábica na bolsa de NY subiram 19% num dia, a maior alta desde 1998, com café brasileiro fluindo para o mercado.", "fonte": "Briefs Finance", "url": "https://www.briefs.co/news/coffee-futures-slip-after-big-spike-in-exchange-stockpiles/", "data": "2026-11-24"},
-    {"titulo": "Chuva pode superar 100 mm no ES até domingo; veja regiões em atenção", "resumo": "Defesa Civil prevê 100 a 130 mm em várias regiões do ES nesta semana e 60 a 80 mm no Norte, com frente fria a partir de quinta.", "fonte": "Capixaba da Gema", "url": "https://capixabadagema.com.br/chuva-espirito-santo-23-29-novembro-2026-alerta/", "data": "2026-11-23"}
+    {"titulo": "Vietnam coffee FOB prices hold firm as global robusta slides", "resumo": "O preço do robusta no interior do Vietnã caiu para cerca de 72 mil dongs/kg, e as exportações de outubro subiram mais de 50% no ano.", "fonte": "CMB News", "url": "https://commodity-board.com/vietnam-coffee-fob-prices-firm-despite-global-robusta-sell-off", "data": "2026-11-22"},
+    {"titulo": "Chuva pode superar 100 mm no ES até domingo; veja regiões em atenção", "resumo": "A Defesa Civil previu 100 a 130 mm em várias regiões do ES nesta semana e 60 a 80 mm no Norte.", "fonte": "Capixaba da Gema", "url": "https://capixabadagema.com.br/chuva-espirito-santo-23-29-novembro-2026-alerta/", "data": "2026-11-23"}
   ],
   "aviso": "Análise informativa baseada nos preços do dia e em notícias. Não é recomendação de compra ou venda."
 }
