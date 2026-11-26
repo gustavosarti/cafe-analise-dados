@@ -12,12 +12,12 @@ Diga o que o mercado está mostrando e quais fatores podem puxar o preço para c
 
 - **Manhã (~6h40):** usa o fechamento das bolsas e o CCCV do dia anterior. Foco: o que esperar para o dia
   e para os próximos meses.
-- **Fim da tarde (~17h40):** depois do fechamento das bolsas e da publicação da cotação do dia no CCCV.
+- **Fim da tarde (a partir das 17h15):** depois do fechamento das bolsas e da publicação da cotação do dia no CCCV.
   Foco: como o dia fechou (CCCV de hoje × ontem, Londres e NY no fechamento) e o que isso muda na expectativa.
   Comece o `titulo` com "Fechamento:" e, no `resumo`, diga o preço de HOJE no CCCV.
-  Antes de escrever, confira se `cccv.ultimo.dia` é o dia de hoje. Se ainda não for, dispare uma nova coleta,
-  espere ~15 minutos e confira de novo (até 3 tentativas). Se o CCCV continuar sem o preço de hoje, escreva o
-  boletim mesmo assim e avise no resumo que a cotação do dia ainda não foi publicada.
+  Antes de escrever, confira se `cccv.ultimo.dia` é o dia de hoje. Se ainda não for, espere 15 minutos,
+  dispare uma nova coleta e confira de novo (17h30, 17h45, 18h00… até 19h00). Se às 19h00 o CCCV continuar
+  sem o preço de hoje, escreva o boletim mesmo assim e avise no resumo que a cotação do dia ainda não saiu.
 
 ## Passo 1: ler os números (nunca invente números)
 
