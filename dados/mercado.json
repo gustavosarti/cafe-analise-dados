@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-11-26T06:40:56-03:00",
+  "gerado_em": "2026-11-26T15:57:58-03:00",
   "cccv": {
     "mes": "novembro",
     "ano": 2026,
@@ -121,79 +121,79 @@
     }
   },
   "dolar": {
-    "cotacao": 5.821,
-    "var_dia_pct": 0.0034359538207726407,
-    "var_mes_pct": 8.263432960738003,
+    "cotacao": 5.74,
+    "var_dia_pct": -1.3881253435953818,
+    "var_mes_pct": 6.756932691055864,
     "fonte": "TradingView"
   },
   "robusta": {
     "unidade": "US$/t",
     "bolsa": "ICE Londres",
     "continuo": {
-      "close": 2808,
-      "change_abs": 10,
-      "change": 0.35739814152966404,
-      "SMA20": 3096.25,
-      "SMA50": 3266.64,
-      "SMA200": 3514.68,
-      "RSI": 18.763380441625614,
-      "Perf.W": -6.989069228221266,
-      "Perf.1M": -12.332188573212614,
-      "Perf.3M": -21.78272980501393,
-      "Perf.6M": -21.123595505617978,
-      "Perf.Y": -38.19062293638565,
+      "close": 2857,
+      "change_abs": 59,
+      "change": 2.1086490350250178,
+      "SMA20": 3098.7,
+      "SMA50": 3267.62,
+      "SMA200": 3514.925,
+      "RSI": 25.863116256869148,
+      "Perf.W": -5.366015236833388,
+      "Perf.1M": -10.802372775522947,
+      "Perf.3M": -20.41782729805014,
+      "Perf.6M": -19.747191011235955,
+      "Perf.Y": -37.11204050187101,
       "price_52_week_high": 4605,
       "price_52_week_low": 2734,
-      "Recommend.All": -0.2181818181818182
+      "Recommend.All": -0.26363636363636367
     },
     "curva": [
       {
         "vencimento": "Jan/27",
         "ano": 2027,
         "mes": 1,
-        "preco": 2809
+        "preco": 2857
       },
       {
         "vencimento": "Mar/27",
         "ano": 2027,
         "mes": 3,
-        "preco": 2779
+        "preco": 2832
       },
       {
         "vencimento": "Mai/27",
         "ano": 2027,
         "mes": 5,
-        "preco": 2762
+        "preco": 2816
       },
       {
         "vencimento": "Jul/27",
         "ano": 2027,
         "mes": 7,
-        "preco": 2752
+        "preco": 2807
       },
       {
         "vencimento": "Set/27",
         "ano": 2027,
         "mes": 9,
-        "preco": 2746
+        "preco": 2801
       },
       {
         "vencimento": "Nov/27",
         "ano": 2027,
         "mes": 11,
-        "preco": 2722
+        "preco": 2788
       },
       {
         "vencimento": "Jan/28",
         "ano": 2028,
         "mes": 1,
-        "preco": 2715
+        "preco": 2782
       },
       {
         "vencimento": "Mar/28",
         "ano": 2028,
         "mes": 3,
-        "preco": 2712
+        "preco": 2779
       }
     ]
   },
@@ -205,10 +205,10 @@
       "nome": "Coffee C Futures",
       "preco": 270,
       "var_dia_pct": 2.817974105102809,
-      "var_semana_pct": -2.8776978417266186,
-      "var_mes_pct": -9.517426273458439,
-      "var_3m_pct": -14.799621331650359,
-      "var_ano_pct": -28.928665438273228,
+      "var_semana_pct": -1.1170115363486581,
+      "var_mes_pct": -10.891089108910892,
+      "var_3m_pct": -13.32263242375602,
+      "var_ano_pct": -28.9567162215498,
       "max_52s": 385,
       "min_52s": 242.7,
       "sma50": 285.629,
@@ -262,10 +262,10 @@
       "nome": "Açúcar (NY)",
       "preco": 18.34,
       "var_dia_pct": 3.850509626274064,
-      "var_semana_pct": 1.6066481994459787,
-      "var_mes_pct": -7.607052896725449,
-      "var_3m_pct": 4.086265607264465,
-      "var_ano_pct": 23.58490566037736,
+      "var_semana_pct": 1.4380530973451415,
+      "var_mes_pct": -3.9790575916230444,
+      "var_3m_pct": 0.7692307692307724,
+      "var_ano_pct": 23.087248322147648,
       "max_52s": 21.29,
       "min_52s": 13.22,
       "sma50": 18.9512,
@@ -280,10 +280,10 @@
       "nome": "Cacau (NY)",
       "preco": 5434,
       "var_dia_pct": 0.3879549233327175,
-      "var_semana_pct": 5.004830917874396,
-      "var_mes_pct": -1.3793103448275863,
-      "var_3m_pct": -6.56808803301238,
-      "var_ano_pct": 5.678724231816414,
+      "var_semana_pct": 7.497527200791295,
+      "var_mes_pct": -1.9310593755639776,
+      "var_3m_pct": -12.958513535159378,
+      "var_ano_pct": 6.382145653876273,
       "max_52s": 6821,
       "min_52s": 2846,
       "sma50": 5463.24,
@@ -332,17 +332,17 @@
     "petroleo_brent": {
       "simbolo": "ICEEUR:BRN1!",
       "nome": "Petróleo Brent",
-      "preco": 89.84,
-      "var_dia_pct": -0.8826125330979668,
-      "var_semana_pct": -1.7067833698030659,
-      "var_mes_pct": -18.660027161611588,
-      "var_3m_pct": 1.5026550672240404,
-      "var_ano_pct": 45.04359057152084,
+      "preco": 91.67,
+      "var_dia_pct": 1.1363636363636376,
+      "var_semana_pct": 0.295404814004372,
+      "var_mes_pct": -17.003168854685377,
+      "var_3m_pct": 3.5702180544571194,
+      "var_ano_pct": 47.99806264126575,
       "max_52s": 119.5,
       "min_52s": 58.72,
-      "sma50": 100.9384,
-      "sma200": 94.6348,
-      "rsi": 37.30191793614359,
+      "sma50": 100.975,
+      "sma200": 94.64395,
+      "rsi": 40.72526964968487,
       "sinal_tecnico": -0.49090909090909096,
       "fonte": "TradingView",
       "unidade": "US$/barril"
@@ -350,17 +350,17 @@
     "indice_dolar": {
       "simbolo": "TVC:DXY",
       "nome": "Índice do dólar (DXY)",
-      "preco": 103.726,
-      "var_dia_pct": 0.02893072056781471,
-      "var_semana_pct": -0.07802941998131442,
-      "var_mes_pct": 1.6622561991571085,
-      "var_3m_pct": 4.653227596505029,
-      "var_ano_pct": 3.891186987309828,
+      "preco": 103.773,
+      "var_dia_pct": 0.07425551612405318,
+      "var_semana_pct": -0.03275308986870445,
+      "var_mes_pct": 1.7083210820346908,
+      "var_3m_pct": 4.700647738967241,
+      "var_ano_pct": 3.938261836319751,
       "max_52s": 104.53,
       "min_52s": 95.551,
-      "sma50": 102.20022,
-      "sma200": 100.20601,
-      "rsi": 62.332678359701745,
+      "sma50": 102.20116,
+      "sma200": 100.206245,
+      "rsi": 62.81817432453562,
       "sinal_tecnico": 0.3668831168831169,
       "fonte": "TradingView",
       "unidade": "pontos"
@@ -368,67 +368,67 @@
   },
   "hoje_x_futuro": {
     "conilon": {
-      "hoje_bolsa": 2808,
+      "hoje_bolsa": 2857,
       "unidade_bolsa": "US$/t",
       "hoje_cccv": 824.0,
       "vencimentos": [
         {
           "vencimento": "Mar/27",
-          "preco_bolsa": 2779,
-          "vs_hoje_bolsa_pct": -1.03,
-          "cccv_estimado": 813.87,
-          "vs_hoje_cccv_pct": -1.23
+          "preco_bolsa": 2832,
+          "vs_hoje_bolsa_pct": -0.88,
+          "cccv_estimado": 815.39,
+          "vs_hoje_cccv_pct": -1.04
         },
         {
           "vencimento": "Mai/27",
-          "preco_bolsa": 2762,
-          "vs_hoje_bolsa_pct": -1.64,
-          "cccv_estimado": 807.93,
-          "vs_hoje_cccv_pct": -1.95
+          "preco_bolsa": 2816,
+          "vs_hoje_bolsa_pct": -1.44,
+          "cccv_estimado": 809.88,
+          "vs_hoje_cccv_pct": -1.71
         },
         {
           "vencimento": "Jul/27",
-          "preco_bolsa": 2752,
-          "vs_hoje_bolsa_pct": -1.99,
-          "cccv_estimado": 804.44,
-          "vs_hoje_cccv_pct": -2.37
+          "preco_bolsa": 2807,
+          "vs_hoje_bolsa_pct": -1.75,
+          "cccv_estimado": 806.78,
+          "vs_hoje_cccv_pct": -2.09
         },
         {
           "vencimento": "Set/27",
-          "preco_bolsa": 2746,
-          "vs_hoje_bolsa_pct": -2.21,
-          "cccv_estimado": 802.35,
-          "vs_hoje_cccv_pct": -2.63
+          "preco_bolsa": 2801,
+          "vs_hoje_bolsa_pct": -1.96,
+          "cccv_estimado": 804.71,
+          "vs_hoje_cccv_pct": -2.34
         },
         {
           "vencimento": "Nov/27",
-          "preco_bolsa": 2722,
-          "vs_hoje_bolsa_pct": -3.06,
-          "cccv_estimado": 793.96,
-          "vs_hoje_cccv_pct": -3.65
+          "preco_bolsa": 2788,
+          "vs_hoje_bolsa_pct": -2.42,
+          "cccv_estimado": 800.24,
+          "vs_hoje_cccv_pct": -2.88
         },
         {
           "vencimento": "Jan/28",
-          "preco_bolsa": 2715,
-          "vs_hoje_bolsa_pct": -3.31,
-          "cccv_estimado": 791.52,
-          "vs_hoje_cccv_pct": -3.94
+          "preco_bolsa": 2782,
+          "vs_hoje_bolsa_pct": -2.63,
+          "cccv_estimado": 798.17,
+          "vs_hoje_cccv_pct": -3.13
         },
         {
           "vencimento": "Mar/28",
-          "preco_bolsa": 2712,
-          "vs_hoje_bolsa_pct": -3.42,
-          "cccv_estimado": 790.47,
-          "vs_hoje_cccv_pct": -4.07
+          "preco_bolsa": 2779,
+          "vs_hoje_bolsa_pct": -2.73,
+          "cccv_estimado": 797.14,
+          "vs_hoje_cccv_pct": -3.26
         }
       ],
-      "diferencial_cccv_rs_saca": -156.72,
+      "diferencial_cccv_rs_saca": -159.95,
       "contrato_referencia": "Jan/27",
       "resumo": {
         "acima_de_hoje": 0,
         "abaixo_de_hoje": 7,
-        "maior_pct": -1.23,
-        "menor_pct": -4.07,
+        "maior_pct": -1.04,
+        "menor_pct": -3.26,
         "leitura": "queda"
       }
     },
@@ -441,45 +441,45 @@
           "vencimento": "Mai/27",
           "preco_bolsa": 263.1,
           "vs_hoje_bolsa_pct": -2.56,
-          "cccv_estimado": 1529.87,
-          "vs_hoje_cccv_pct": -3.36
+          "cccv_estimado": 1530.61,
+          "vs_hoje_cccv_pct": -3.31
         },
         {
           "vencimento": "Jul/27",
           "preco_bolsa": 257.7,
           "vs_hoje_bolsa_pct": -4.56,
-          "cccv_estimado": 1488.29,
-          "vs_hoje_cccv_pct": -5.98
+          "cccv_estimado": 1489.61,
+          "vs_hoje_cccv_pct": -5.9
         },
         {
           "vencimento": "Set/27",
           "preco_bolsa": 253.2,
           "vs_hoje_bolsa_pct": -6.22,
-          "cccv_estimado": 1453.64,
-          "vs_hoje_cccv_pct": -8.17
+          "cccv_estimado": 1455.44,
+          "vs_hoje_cccv_pct": -8.06
         },
         {
           "vencimento": "Dez/27",
           "preco_bolsa": 248,
           "vs_hoje_bolsa_pct": -8.15,
-          "cccv_estimado": 1413.6,
-          "vs_hoje_cccv_pct": -10.7
+          "cccv_estimado": 1415.96,
+          "vs_hoje_cccv_pct": -10.55
         },
         {
           "vencimento": "Mar/28",
           "preco_bolsa": 243.9,
           "vs_hoje_bolsa_pct": -9.67,
-          "cccv_estimado": 1382.03,
-          "vs_hoje_cccv_pct": -12.7
+          "cccv_estimado": 1384.83,
+          "vs_hoje_cccv_pct": -12.52
         }
       ],
-      "diferencial_cccv_rs_saca": -495.96,
+      "diferencial_cccv_rs_saca": -467.03,
       "contrato_referencia": "Mar/27",
       "resumo": {
         "acima_de_hoje": 0,
         "abaixo_de_hoje": 5,
-        "maior_pct": -3.36,
-        "menor_pct": -12.7,
+        "maior_pct": -3.31,
+        "menor_pct": -12.52,
         "leitura": "queda"
       }
     }
