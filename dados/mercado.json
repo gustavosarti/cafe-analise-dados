@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-11-27T17:16:57-03:00",
+  "gerado_em": "2026-11-27T20:41:43-03:00",
   "cccv": {
     "mes": "novembro",
     "ano": 2026,
@@ -133,9 +133,9 @@
     }
   },
   "dolar": {
-    "cotacao": 5.5203,
-    "var_dia_pct": -2.318050713995014,
-    "var_mes_pct": 3.1369105448023222,
+    "cotacao": 5.5582,
+    "var_dia_pct": -1.6474085608620979,
+    "var_mes_pct": 3.932384674358162,
     "fonte": "TradingView"
   },
   "robusta": {
@@ -362,17 +362,17 @@
     "indice_dolar": {
       "simbolo": "TVC:DXY",
       "nome": "Índice do dólar (DXY)",
-      "preco": 104.036,
-      "var_dia_pct": 0.249573604941365,
-      "var_semana_pct": 0.14438904183432386,
-      "var_mes_pct": 1.6304082370295083,
-      "var_3m_pct": 4.965998748915387,
-      "var_ano_pct": 4.555641538446078,
+      "preco": 104.035,
+      "var_dia_pct": 0.24861000028907712,
+      "var_semana_pct": 0.14342644822209047,
+      "var_mes_pct": 1.6294313597155257,
+      "var_3m_pct": 4.964989809714059,
+      "var_ano_pct": 4.554636543621797,
       "max_52s": 104.53,
       "min_52s": 95.551,
-      "sma50": 102.27766,
-      "sma200": 100.2375,
-      "rsi": 65.49530512177375,
+      "sma50": 102.27763999999999,
+      "sma200": 100.237495,
+      "rsi": 65.48584596499722,
       "sinal_tecnico": 0.6006493506493507,
       "fonte": "TradingView",
       "unidade": "pontos"
@@ -388,59 +388,59 @@
           "vencimento": "Mar/27",
           "preco_bolsa": 2923,
           "vs_hoje_bolsa_pct": -0.78,
-          "cccv_estimado": 821.38,
-          "vs_hoje_cccv_pct": -0.92
+          "cccv_estimado": 821.33,
+          "vs_hoje_cccv_pct": -0.93
         },
         {
           "vencimento": "Mai/27",
           "preco_bolsa": 2909,
           "vs_hoje_bolsa_pct": -1.26,
-          "cccv_estimado": 816.74,
-          "vs_hoje_cccv_pct": -1.48
+          "cccv_estimado": 816.66,
+          "vs_hoje_cccv_pct": -1.49
         },
         {
           "vencimento": "Jul/27",
           "preco_bolsa": 2897,
           "vs_hoje_bolsa_pct": -1.66,
-          "cccv_estimado": 812.77,
-          "vs_hoje_cccv_pct": -1.96
+          "cccv_estimado": 812.66,
+          "vs_hoje_cccv_pct": -1.97
         },
         {
           "vencimento": "Set/27",
           "preco_bolsa": 2885,
           "vs_hoje_bolsa_pct": -2.07,
-          "cccv_estimado": 808.8,
-          "vs_hoje_cccv_pct": -2.44
+          "cccv_estimado": 808.66,
+          "vs_hoje_cccv_pct": -2.45
         },
         {
           "vencimento": "Nov/27",
           "preco_bolsa": 2870,
           "vs_hoje_bolsa_pct": -2.58,
-          "cccv_estimado": 803.83,
-          "vs_hoje_cccv_pct": -3.04
+          "cccv_estimado": 803.65,
+          "vs_hoje_cccv_pct": -3.06
         },
         {
           "vencimento": "Jan/28",
           "preco_bolsa": 2862,
           "vs_hoje_bolsa_pct": -2.85,
-          "cccv_estimado": 801.18,
-          "vs_hoje_cccv_pct": -3.36
+          "cccv_estimado": 800.99,
+          "vs_hoje_cccv_pct": -3.38
         },
         {
           "vencimento": "Mar/28",
           "preco_bolsa": 2858,
           "vs_hoje_bolsa_pct": -2.99,
-          "cccv_estimado": 799.85,
-          "vs_hoje_cccv_pct": -3.52
+          "cccv_estimado": 799.65,
+          "vs_hoje_cccv_pct": -3.54
         }
       ],
-      "diferencial_cccv_rs_saca": -146.77,
+      "diferencial_cccv_rs_saca": -153.47,
       "contrato_referencia": "Jan/27",
       "resumo": {
         "acima_de_hoje": 0,
         "abaixo_de_hoje": 7,
-        "maior_pct": -0.92,
-        "menor_pct": -3.52,
+        "maior_pct": -0.93,
+        "menor_pct": -3.54,
         "leitura": "queda"
       }
     },
@@ -453,45 +453,45 @@
           "vencimento": "Mai/27",
           "preco_bolsa": 268.3,
           "vs_hoje_bolsa_pct": -2.52,
-          "cccv_estimado": 1530.25,
-          "vs_hoje_cccv_pct": -3.21
+          "cccv_estimado": 1529.9,
+          "vs_hoje_cccv_pct": -3.23
         },
         {
           "vencimento": "Jul/27",
           "preco_bolsa": 262.9,
           "vs_hoje_bolsa_pct": -4.49,
-          "cccv_estimado": 1490.82,
-          "vs_hoje_cccv_pct": -5.7
+          "cccv_estimado": 1490.2,
+          "vs_hoje_cccv_pct": -5.74
         },
         {
           "vencimento": "Set/27",
           "preco_bolsa": 258.3,
           "vs_hoje_bolsa_pct": -6.16,
-          "cccv_estimado": 1457.23,
-          "vs_hoje_cccv_pct": -7.83
+          "cccv_estimado": 1456.38,
+          "vs_hoje_cccv_pct": -7.88
         },
         {
           "vencimento": "Dez/27",
           "preco_bolsa": 252.75,
           "vs_hoje_bolsa_pct": -8.17,
-          "cccv_estimado": 1416.7,
-          "vs_hoje_cccv_pct": -10.39
+          "cccv_estimado": 1415.58,
+          "vs_hoje_cccv_pct": -10.46
         },
         {
           "vencimento": "Mar/28",
           "preco_bolsa": 248.05,
           "vs_hoje_bolsa_pct": -9.88,
-          "cccv_estimado": 1382.38,
-          "vs_hoje_cccv_pct": -12.56
+          "cccv_estimado": 1381.02,
+          "vs_hoje_cccv_pct": -12.65
         }
       ],
-      "diferencial_cccv_rs_saca": -428.9,
+      "diferencial_cccv_rs_saca": -442.7,
       "contrato_referencia": "Mar/27",
       "resumo": {
         "acima_de_hoje": 0,
         "abaixo_de_hoje": 5,
-        "maior_pct": -3.21,
-        "menor_pct": -12.56,
+        "maior_pct": -3.23,
+        "menor_pct": -12.65,
         "leitura": "queda"
       }
     }
